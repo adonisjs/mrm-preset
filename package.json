@@ -10,7 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "mrm-core": "^3.1.1"
+    "deep-extend": "^0.6.0",
+    "mrm-core": "^3.1.1",
+    "mrm-task-license": "^1.2.2"
   },
   "devDependencies": {
     "cz-conventional-changelog": "^2.1.0",
