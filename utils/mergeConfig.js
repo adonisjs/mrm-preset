@@ -12,7 +12,7 @@ const deepExtend = require('deep-extend')
 
 module.exports = function (config) {
   try {
-    const projectConfigFile = require(path.join(process.cwd(), 'mrm.json'))
+    const projectConfigFile = require(path.join(process.cwd(), 'config.json'))
     deepExtend(config.values(), projectConfigFile || {})
   } catch (error) {
     // ignore

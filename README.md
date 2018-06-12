@@ -58,11 +58,68 @@ Better will be to create an npm script task.
 }
 ```
 
+## Config
+The config is picked from the `config.json` file inside the app root. Different tasks may rely optionally on different config files.
+
 ## Tasks
 
 - [Gitignore](#gitignore)
-- 
+- [EditorConfig](#editorconfig)
+- [License file](#license-file)
 
 
+### Gitignore
 
+Adds/Updates `.gitignore` file to the project root with the following contents.
 
+```ini
+node_modules
+coverage
+.DS_STORE
+.nyc_output
+.idea
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.log
+yarn.lock
+```
+
+### Editorconfig
+
+Adds/Updates `.editorconfig` file to the project root with the following contents.
+
+```ini
+# http://editorconfig.org
+
+[*]
+indent_style = space
+indent_size = 2
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.json]
+insert_final_newline = ignore
+
+[**.min.js]
+indent_style = ignore
+insert_final_newline = ignore
+
+[MakeFile]
+indent_style = tab
+
+[*.md]
+trim_trailing_whitespace = false
+```
+
+### License file
+
+Creates `LICENSE.md` file inside the project root. By default the contents is of **MIT License**, however you can define a different license type too inside `config.json` file
+
+```json
+{
+  "license": "MIT"
+}
+```
