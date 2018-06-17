@@ -1,6 +1,6 @@
 # MRM preset Adonis
 
-This repo is the preset used to AdonisJs team to manage and keep their config in sync. It contains a bunch of tasks, which can be used to scaffold a new project and also keep the config files in sync.
+This repo is the preset used by AdonisJs team to manage and keep their config in sync. It contains a bunch of tasks, which can be used to scaffold a new project and also keep the config files in sync.
 
 ## How it works?
 All of the tasks exported by this package scaffolds new projects by creating `required config` files and also updates them (if required).
@@ -59,13 +59,21 @@ Better will be to create an npm script task.
 ```
 
 ## Config
-The config is picked from the `config.json` file inside the app root. Different tasks may rely optionally on different config files.
+The config is picked from the `config.json` file inside the app root. Different tasks may rely optionally on different config values.
+
+## Sync or not to sync
+MRM is not only a scaffolding tool, in-fact it makes it possible to keep config files in sync when something changes in the central preset repo. However, some files like `README.md` or `CONTRIBUTING.md` cannot be kept in sync because of their nature. 
+
+In case, you want to force update these files, make sure to pass `--config:force` when executing related tasks.
 
 ## Tasks
 
 - [Gitignore](#gitignore)
 - [EditorConfig](#editorconfig)
 - [License file](#license-file)
+- [Contributing file](#contributing-file)
+- [Readme file](#readme-file)
+- [Github templates](#github-templates)
 
 
 ### Gitignore
@@ -123,3 +131,32 @@ Creates `LICENSE.md` file inside the project root. By default the contents is of
   "license": "MIT"
 }
 ```
+
+### Contributing file
+
+Creates `CONTRIBUTING.md` file inside the project root. This file is **not kept in sync** and hence you are allowed to change it's content freely.
+
+```bash
+npm run mrm contributing
+
+# force update
+npm run mrm contributing -- --config:force
+```
+
+### Readme file
+
+Creates a minimal `README.md` file inside the project root. Since each project has it's own unique readme, we **do not sync this file**.
+
+Badges are also added for supported services like.
+
+- travis
+- npm
+- coveralls
+- appveyor
+- npm license
+
+### Github templates
+
+Github templates for issues and PR are created inside `.github/ISSUE_TEMPLATE.md` and `.github/PULL_REQUEST_TEMPLATE.md` respectively.
+
+Also these templates are **not kept in sync**, unless `force` flag is passed.
