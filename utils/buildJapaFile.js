@@ -1,0 +1,101 @@
+/*
+* @adonisjs/mrm-preset
+*
+* (c) Harminder Virk <virk@adonisjs.com>
+*
+* For the full copyright and license information, please view the LICENSE
+* file that was distributed with this source code.
+*/
+
+const recast = require('recast')
+
+/**
+ * Added to japaFile.js
+ */
+const japaCliContent = `const cli = require('japa/cli')
+cli.run('test/**/*.spec.ts')
+`
+
+/**
+ * Add to japaFile.js when project uses Typescript
+ */
+const tsRegisterContent = `require('ts-node/register')\n\n`
+
+/**
+ * Returns the name of the require module. It is the job
+ * of the consumer to pass the `CallExpression` node
+ * to this method.
+ *
+ * @method getRequireName
+ *
+ * @param  {Object}       node
+ *
+ * @return {String|Null}
+ */
+function getRequireName (node) {
+  if (!node.callee || node.callee.name !== 'require') {
+    return null
+  }
+
+  if (node.arguments[0].type !== 'Literal') {
+    return null
+  }
+
+  return node.arguments[0].value
+}
+
+module.exports = function (existingContent, ts) {
+  let japaCliRequired = false
+
+  /**
+   * We set tsNodeRequired to true when project is not using
+   * typescript. By doing this, we simply skip the typescript
+   * related checks and do not add typescript related code
+   * to japaFile.js
+   */
+  let tsNodeRequired = !ts
+
+  const ast = recast.parse(existingContent)
+
+  /**
+   * Looking for all callExpressions and finding neccessary `require`
+   * calls.
+   */
+  recast.types.visit(ast, {
+    visitCallExpression ({ node }) {
+      if (!japaCliRequired && getRequireName(node) === 'japa/cli') {
+        japaCliRequired = true
+      }
+
+      if (!tsNodeRequired && getRequireName(node) === 'ts-node/register') {
+        tsNodeRequired = true
+      }
+
+      return false
+    }
+  })
+
+  /**
+   * Add japa/cli require statement when missing
+   */
+  if (!japaCliRequired) {
+    recast.parse(japaCliContent).program.body.forEach((node) => {
+      ast.program.body.unshift(node)
+    })
+  }
+
+  /**
+   * Add ts related code when missing. Also make sure this is added
+   * as the first line inside the japaFile.js file
+   */
+  if (!tsNodeRequired) {
+    recast.parse(tsRegisterContent).program.body.forEach((node) => {
+      ast.program.body.unshift(node)
+    })
+  }
+
+  /**
+   * String and return a string back
+   */
+  return recast.print(ast).code
+}
