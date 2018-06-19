@@ -79,9 +79,7 @@ module.exports = function (existingContent, ts) {
    * Add japa/cli require statement when missing
    */
   if (!japaCliRequired) {
-    recast.parse(japaCliContent).program.body.forEach((node) => {
-      ast.program.body.unshift(node)
-    })
+    ast.program.body = recast.parse(japaCliContent).program.body.concat(ast.program.body)
   }
 
   /**
@@ -89,9 +87,7 @@ module.exports = function (existingContent, ts) {
    * as the first line inside the japaFile.js file
    */
   if (!tsNodeRequired) {
-    recast.parse(tsRegisterContent).program.body.forEach((node) => {
-      ast.program.body.unshift(node)
-    })
+    ast.program.body = recast.parse(tsRegisterContent).program.body.concat(ast.program.body)
   }
 
   /**

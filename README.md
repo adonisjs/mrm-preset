@@ -76,7 +76,7 @@ In case, you want to force update these files, make sure to pass `--config:force
 - [Github templates](#github-templates)
 
 
-### Gitignore
+### Gitignore (sync)
 
 Adds/Updates `.gitignore` file to the project root with the following contents.
 
@@ -93,7 +93,7 @@ coverage
 yarn.lock
 ```
 
-### Editorconfig
+### Editorconfig (sync)
 
 Adds/Updates `.editorconfig` file to the project root with the following contents.
 
@@ -122,7 +122,7 @@ indent_style = tab
 trim_trailing_whitespace = false
 ```
 
-### License file
+### License file (sync)
 
 Creates `LICENSE.md` file inside the project root. By default the contents is of **MIT License**, however you can define a different license type too inside `config.json` file
 
@@ -132,7 +132,7 @@ Creates `LICENSE.md` file inside the project root. By default the contents is of
 }
 ```
 
-### Contributing file
+### Contributing file (force sync)
 
 Creates `CONTRIBUTING.md` file inside the project root. This file is **not kept in sync** and hence you are allowed to change it's content freely.
 
@@ -155,7 +155,7 @@ Badges are also added for supported services like.
 - appveyor
 - npm license
 
-### Github templates
+### Github templates (sync)
 
 Github templates for issues and PR are created inside `.github/ISSUE_TEMPLATE.md` and `.github/PULL_REQUEST_TEMPLATE.md` respectively.
 

@@ -9,27 +9,32 @@
 
 const { template } = require('mrm-core')
 const { join } = require('path')
+const debug = require('debug')('adonis:mrm-contributing')
+
+const mergeConfig = require('../utils/mergeConfig')
+const saveFile = require('../utils/saveFile')
 
 function task (config) {
-  let templateFile = 'CONTRIBUTING.md'
+  mergeConfig(config)
 
-  if (config.core) {
+  const values = config.defaults({ force: false }).values()
+
+  /**
+   * Choosing which template to use
+   */
+  let templateFile = 'CONTRIBUTING.md'
+  if (values.core) {
     templateFile = 'CONTRIBUTING_CORE.md'
-  } else if (config.ts) {
+  } else if (values.ts) {
     templateFile = 'CONTRIBUTING_TS.md'
   }
 
+  debug('template file %s', templateFile)
+
   const file = template('CONTRIBUTING.md', join(__dirname, 'templates', templateFile))
+  file.apply()
 
-  const { github, packageName, force } = config
-    .defaults({ force: false })
-    .values()
-
-  if (file.exists() && !force) {
-    return
-  }
-
-  file.apply({ github, packageName }).save()
+  saveFile(file, values.force)
 }
 
 task.description = 'Adds CONTRIBUTING.md file'

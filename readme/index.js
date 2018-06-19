@@ -7,35 +7,17 @@
 * file that was distributed with this source code.
 */
 
-const { template, packageJson, ini, MrmError } = require('mrm-core')
+const { template, packageJson } = require('mrm-core')
 const path = require('path')
-const gh = require('parse-github-url')
 const gitUserName = require('git-user-name')
 
 const mergeConfig = require('../utils/mergeConfig')
 const Services = require('../utils/Services')
+const gh = require('../utils/ghAttributes')
 
 function task (config) {
   mergeConfig(config)
-
-  /**
-   * Ensure .git/config exists
-   */
-  const ghFile = ini('.git/config')
-  if (!ghFile.exists()) {
-    throw new MrmError('Initiate git repo before creating README.md file')
-  }
-
-  /**
-   * Ensure remote origin has been added to
-   * the repo
-   */
-  const origin = ghFile.get('remote "origin"')
-  if (!origin || !origin.url) {
-    throw new MrmError('Add remote origin before creating README.md file')
-  }
-
-  const ghAttributes = gh(origin.url)
+  const ghAttributes = gh('creating README.md file')
 
   const values = config
     .defaults({

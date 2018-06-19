@@ -8,6 +8,7 @@
 */
 
 const { ini } = require('mrm-core')
+const debug = require('debug')('adonis:mrm-editorconfig')
 
 /**
  * The defaults has precedence over the contents inside
@@ -61,7 +62,9 @@ function task () {
   const file = ini('.editorconfig', 'http://editorconfig.org')
 
   Object.keys(defaults).forEach((name) => {
-    file.set(name, mergeSection(name, file.get(name)))
+    const values = mergeSection(name, file.get(name))
+    debug('section %s: %o', name, values)
+    file.set(name, values)
   })
 
   file.save()
