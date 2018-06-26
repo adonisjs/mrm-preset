@@ -1,3 +1,14 @@
+<a name="1.0.1"></a>
+## [1.0.1](https://github.com/adonisjs/mrm-preset/compare/v1.0.0...v1.0.1) (2018-06-26)
+
+
+### Bug Fixes
+
+* **github:** export instance of standardtemplate ([37a7cd6](https://github.com/adonisjs/mrm-preset/commit/37a7cd6))
+* **test:** use `.js` glob when using javascript as source ([0cf978e](https://github.com/adonisjs/mrm-preset/commit/0cf978e))
+
+
+
 <a name="1.0.0"></a>
 # 1.0.0 (2018-06-19)
 

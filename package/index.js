@@ -44,6 +44,7 @@ function task (config) {
    * Add required scripts
    */
   pkgFile.setScript('commit', 'git-cz')
+  pkgFile.setScript('pretest', 'npm run lint')
 
   /**
    * Have different set of scripts when coveralls is used
