@@ -10,10 +10,17 @@
 const recast = require('recast')
 
 /**
- * Added to japaFile.js
+ * Added to japaFile.js for Typescript
  */
-const japaCliContent = `const cli = require('japa/cli')
+const japaCliTsContent = `const cli = require('japa/cli')
 cli.run('test/**/*.spec.ts')
+`
+
+/**
+ * Added to japaFile.js for Javascript
+ */
+const japaCliJsContent = `const cli = require('japa/cli')
+cli.run('test/**/*.spec.js')
 `
 
 /**
@@ -79,7 +86,7 @@ module.exports = function (existingContent, ts) {
    * Add japa/cli require statement when missing
    */
   if (!japaCliRequired) {
-    ast.program.body = recast.parse(japaCliContent).program.body.concat(ast.program.body)
+    ast.program.body = recast.parse(ts ? japaCliTsContent : japaCliJsContent).program.body.concat(ast.program.body)
   }
 
   /**
