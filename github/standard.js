@@ -18,7 +18,7 @@ class StandardTemplate {
 
   up () {
     debug('using template: %s', this.issues)
-    template(this.issues, join(__dirname, 'templates', 'issues.md'))
+    template(this.issues, join(__dirname, 'templates', 'issues.md')).apply().save()
   }
 
   down () {
@@ -27,4 +27,4 @@ class StandardTemplate {
   }
 }
 
-module.exports = StandardTemplate
+module.exports = new StandardTemplate()
