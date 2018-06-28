@@ -12,7 +12,7 @@ const mergeConfig = require('../utils/mergeConfig')
 const buildJapaFile = require('../utils/buildJapaFile')
 
 const dependencies = ['japa', 'japa-cli', 'cz-conventional-changelog', 'commitizen']
-const tsDeps = ['ts-node', 'typescript', '@types/node', 'tslint', 'tslint-eslint-rules']
+const tsDeps = ['ts-node', 'typescript', '@types/node', 'tslint', 'tslint-eslint-rules', 'webpack', 'add-module-exports-webpack-plugin', 'webpack-cli', 'awesome-typescript-loader', 'del-cli']
 const jsDeps = ['standard']
 
 function task (config) {
@@ -64,7 +64,10 @@ function task (config) {
    */
   if (values.ts) {
     pkgFile.setScript('lint', 'tslint --project tsconfig.json')
-    pkgFile.prependScript('build', 'npm run lint && tsc')
+    pkgFile.setScript('clean', 'del dist')
+    pkgFile.setScript('compile', 'npm run lint && npm run clean && tsc')
+    pkgFile.prependScript('build', 'npm run lint && npm run clean && webpack')
+    pkgFile.setScript('prepublishOnly', 'npm run build')
   } else {
     pkgFile.setScript('lint', 'standard')
   }
@@ -90,8 +93,8 @@ function task (config) {
    * Create tsconfig.json and tslint.json files
    */
   if (values.ts) {
-    json('tsconfig.json').merge({ extends: './node_modules/@adonisjs/mrm-preset/_tsconfig' })
-    json('tslint.json').merge({ extends: ['@adonisjs/mrm-preset/_tslint'], rules: {} })
+    json('tsconfig.json').merge({ extends: './node_modules/@adonisjs/mrm-preset/_tsconfig' }).save()
+    json('tslint.json').merge({ extends: ['@adonisjs/mrm-preset/_tslint'], rules: {} }).save()
   }
 }
 
