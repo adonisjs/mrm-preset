@@ -27,7 +27,8 @@ function task () {
     '*.sublime-project',
     '*.sublime-workspace',
     '*.log',
-    'yarn.lock'
+    'yarn.lock',
+    'build'
   ])
 
   file.save()
