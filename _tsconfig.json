@@ -4,16 +4,15 @@
     "module": "commonjs",
     "declaration": true,
     "moduleResolution": "node",
-    "outDir": "../../build",
-    "rootDir": "../../src",
+    "outDir": "../../../build",
+    "rootDir": "../../..",
     "strictNullChecks": true,
     "allowSyntheticDefaultImports": true
   },
   "include": [
-    "../../src/**/*"
+    "../../../src/**/*.ts"
   ],
   "exclude": [
-    "../../node_modules/*",
-    "../../test/**"
+    "../../../node_modules/*"
   ]
 }
