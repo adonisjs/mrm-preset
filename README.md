@@ -242,3 +242,19 @@ The following dependencies and scripts are shared across all project types.
   "pretest": "npm run lint",  
 }
 ```
+
+### Travis
+Adds `.travis.yml` file to the project. It relies on the values of `services` and `minNodeVersion` inside the config file.
+
+```bash
+npm run mrm travis
+```
+
+### Appveyor
+Adds `appveyor.yml` file to the project. It relies on the values of `services` and `minNodeVersion` inside the config file.
+
+Also appveyor is considered as a secondary CI and hence coverage is not reported from appveyor tests.
+
+```bash
+npm run mrm appveyor
+```
