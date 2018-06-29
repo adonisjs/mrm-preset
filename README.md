@@ -45,7 +45,7 @@ npm i --save-dev @adonisjs/mrm-preset mrm
 And then run tasks as follows
 
 ```bash
-./node_modules/.bin/mrm --dir=./node_modules/@adonisjs/mrm-preset <TASK>
+./node_modules/.bin/mrm --preset=@adonisjs/mrm-preset <TASK>
 ```
 
 Better will be to create an npm script task.
@@ -53,13 +53,20 @@ Better will be to create an npm script task.
 ```json
 {
   "scripts": {
-    "mrm": "mrm --dir=node_modules/@adonisjs/mrm-preset"
+    "mrm": "mrm --preset=@adonisjs/mrm-preset"
   }
 }
 ```
 
 ## Config
 The config is picked from the `config.json` file inside the app root. Different tasks may rely optionally on different config values.
+
+## Setup
+You can setup a new project from scratch by running the `setup` task. It will execute all other tasks for you.
+
+```bash
+npm run mrm setup
+```
 
 ## Sync or not to sync
 MRM is not only a scaffolding tool, in-fact it makes it possible to keep config files in sync when something changes in the central preset repo. However, some files like `README.md` or `CONTRIBUTING.md` cannot be kept in sync because of their nature. 
@@ -68,13 +75,15 @@ In case, you want to force update these files, make sure to pass `--config:force
 
 ## Tasks
 
-- [Gitignore](#gitignore)
-- [EditorConfig](#editorconfig)
-- [License file](#license-file)
-- [Contributing file](#contributing-file)
-- [Readme file](#readme-file)
-- [Github templates](#github-templates)
-
+- [Gitignore](#gitignore-sync)
+- [EditorConfig](#editorconfig-sync)
+- [License file](#license-file-sync)
+- [Contributing file](#contributing-file-force-sync)
+- [Readme file](#readme-file-force-sync)
+- [Github templates](#github-templates-sync)
+- [Package.json](#packagejson-file-sync)
+- [Travis](#travis-sync)
+- [Appveyor](#appveyor-sync)
 
 ### Gitignore (sync)
 
@@ -243,14 +252,14 @@ The following dependencies and scripts are shared across all project types.
 }
 ```
 
-### Travis
+### Travis (sync)
 Adds `.travis.yml` file to the project. It relies on the values of `services` and `minNodeVersion` inside the config file.
 
 ```bash
 npm run mrm travis
 ```
 
-### Appveyor
+### Appveyor (sync)
 Adds `appveyor.yml` file to the project. It relies on the values of `services` and `minNodeVersion` inside the config file.
 
 Also appveyor is considered as a secondary CI and hence coverage is not reported from appveyor tests.
