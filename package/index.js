@@ -15,7 +15,7 @@ const JsPreset = require('./JsPreset')
 const TsPreset = require('./TsPreset')
 const CoverallsPreset = require('./CoverallsPreset')
 
-const baseDependencies = ['japa', 'japa-cli', 'cz-conventional-changelog', 'commitizen']
+const baseDependencies = ['japa', 'japa-cli', 'cz-conventional-changelog', 'commitizen', 'pkg-ok']
 
 function task (config) {
   mergeConfig(config)
@@ -47,6 +47,7 @@ function task (config) {
   pkgFile.setScript('test', hasCoveralls ? 'nyc japa' : 'japa')
   pkgFile.setScript('commit', 'git-cz')
   pkgFile.setScript('pretest', 'npm run lint')
+  pkgFile.appendScript('prepublishOnly', 'pkg-ok')
   pkgFile.set('config.commitizen.path', 'cz-conventional-changelog')
 
   if (hasAppVeyor) {
