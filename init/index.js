@@ -8,8 +8,10 @@
 */
 
 const inquirer = require('inquirer')
-const { json } = require('mrm-core')
+const { json, ini } = require('mrm-core')
 const debug = require('debug')('adonis:mrm-init')
+const { execSync } = require('child_process')
+const chalk = require('chalk')
 
 /**
  * Asking for project language
@@ -21,6 +23,23 @@ const projectLang = {
   choices: ['Typescript', 'Javascript'],
   message: 'Select the language you want to code in',
   name: 'lang'
+}
+
+const gitOrigin = {
+  type: 'input',
+  message: 'Enter git origin url',
+  validate (input) {
+    return !input ? 'Please create a git project and enter it\'s remote origin' : true
+  },
+  when () {
+    const gitFile = ini('.git/config')
+    if (!gitFile.exists()) {
+      return true
+    }
+    const origin = gitFile.get('remote "origin"')
+    return !origin || !origin.url
+  },
+  name: 'gitOrigin'
 }
 
 /**
@@ -141,7 +160,15 @@ async function task () {
   services.default = existingAnswers.services
   appveyorUsername.default = existingAnswers.appveyorUsername
 
-  const answers = await inquirer.prompt([projectLang, minNodeVersion, isCore, license, services, appveyorUsername])
+  const answers = await inquirer.prompt([
+    gitOrigin,
+    projectLang,
+    minNodeVersion,
+    isCore,
+    license,
+    services,
+    appveyorUsername
+  ])
 
   const fileContent = {
     core: answers.core,
@@ -156,6 +183,17 @@ async function task () {
 
   file.set(fileContent)
   file.save()
+
+  /**
+   * Initiate git repo, when answers has gitOrigin
+   */
+  if (answers.gitOrigin) {
+    console.log(chalk.yellow('git init'))
+    execSync('git init')
+
+    console.log(chalk.yellow(`git remote add origin ${answers.gitOrigin}`))
+    execSync(`git remote add origin ${answers.gitOrigin}`)
+  }
 }
 
 task.description = 'Initiate the project config file'

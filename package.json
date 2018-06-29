@@ -2,7 +2,7 @@
   "name": "@adonisjs/mrm-preset",
   "version": "1.0.1",
   "description": "MRM preset used by adonisjs for all core packages",
-  "main": "index.js",
+  "main": "config.json",
   "scripts": {
     "lint": "standard"
   },
@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "chalk": "^2.4.1",
     "debug": "^3.1.0",
     "deep-extend": "^0.6.0",
     "git-user-name": "^2.0.0",
