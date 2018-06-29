@@ -12,7 +12,7 @@ We love pull requests. And following this guidelines will make your pull request
 
 We make use of Typescript along with [Tslint](https://palantir.github.io/tslint) to ensure a consistent coding style. All of the rules are defined inside the `tslint.json` file.
 
-## Development workflow
+## Development work-flow
 
 Always make sure to lint and test your code before pushing it to the GitHub.
 

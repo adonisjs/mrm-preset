@@ -17,6 +17,15 @@ const standard = require('./standard')
 
 const prTemplate = '.github/PULL_REQUEST_TEMPLATE.md'
 
+/**
+ * Creating required github templates
+ *
+ * @method task
+ *
+ * @param  {Object} config
+ *
+ * @return {void}
+ */
 function task (config) {
   mergeConfig(config)
 

@@ -143,20 +143,102 @@ npm run mrm contributing
 npm run mrm contributing -- --config:force
 ```
 
-### Readme file
+### Readme file (force sync)
 
 Creates a minimal `README.md` file inside the project root. Since each project has it's own unique readme, we **do not sync this file**.
 
 Badges are also added for supported services like.
 
 - travis
-- npm
 - coveralls
 - appveyor
 - npm license
 
-### Github templates (sync)
+```bash
+npm run mrm readme
 
+# force update
+npm run mrm readme -- --config:force
+```
+
+### Github templates (sync)
 Github templates for issues and PR are created inside `.github/ISSUE_TEMPLATE.md` and `.github/PULL_REQUEST_TEMPLATE.md` respectively.
 
-Also these templates are **not kept in sync**, unless `force` flag is passed.
+```bash
+npm run mrm github
+```
+
+### Package.json file (sync)
+Updates the `package.json` file all required scripts and config for the project. The package file structure and installed dependencies highly depends upon the values of `ts` and `services` inside the `config.json` file.
+
+#### For Typescript project
+The following dependencies are installed for a Typescript project.
+
+```bash
+'ts-node'
+'typescript'
+'@types/node'
+'tslint'
+'tslint-eslint-rules'
+'del-cli'
+```
+
+and following scripts are added to package.json file
+
+```json
+{
+  "lint": "tslint --project tsconfig.json",
+  "clean": "del dist",
+  "compile": "npm run lint && npm run clean && tsc",
+  "build": "npm run compile",
+  "prepublishOnly": "npm run build"
+}
+```
+
+#### For Javascript project
+The following dependencies are installed for a Javascript project.
+
+```bash
+'standard'
+```
+
+and following scripts are added to package.json file
+
+```json
+{
+  "lint": "standard"
+}
+```
+
+#### Coveralls
+When the `services` array has `coveralls` as a value, then following dependencies are installed, along with the following **npm scripts**.
+
+```bash
+'coveralls'
+'nyc'
+```
+
+```json
+{
+  "coverage": "nyc report --reporter=text-lcov | coveralls",
+  "posttest": "npm run coverage"
+}
+```
+
+#### Common config
+The following dependencies and scripts are shared across all project types.
+
+```bash
+'japa',
+'japa-cli',
+'cz-conventional-changelog',
+'commitizen'
+```
+
+```json
+{
+  "test": "japa",
+  "commit": "git-cz",
+  "pretest": "npm run lint",  
+}
+```

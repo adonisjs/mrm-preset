@@ -54,7 +54,8 @@ function mergeSection (section, existing = {}) {
 }
 
 /**
- * Creates `.editorconfig` file
+ * Creates `.editorconfig` file. The config file is same for
+ * all projects and doesn't divert on the basis of config
  *
  * @return {void}
  */

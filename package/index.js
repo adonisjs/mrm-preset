@@ -7,79 +7,63 @@
 * file that was distributed with this source code.
 */
 
-const { packageJson, install, file, json, uninstall } = require('mrm-core')
+const { packageJson, file } = require('mrm-core')
+
 const mergeConfig = require('../utils/mergeConfig')
 const buildJapaFile = require('../utils/buildJapaFile')
+const JsPreset = require('./JsPreset')
+const TsPreset = require('./TsPreset')
+const CoverallsPreset = require('./CoverallsPreset')
 
-const dependencies = ['japa', 'japa-cli', 'cz-conventional-changelog', 'commitizen']
-const tsDeps = ['ts-node', 'typescript', '@types/node', 'tslint', 'tslint-eslint-rules', 'webpack', 'add-module-exports-webpack-plugin', 'webpack-cli', 'awesome-typescript-loader', 'del-cli']
-const jsDeps = ['standard']
+const baseDependencies = ['japa', 'japa-cli', 'cz-conventional-changelog', 'commitizen']
 
 function task (config) {
   mergeConfig(config)
 
   const values = config.defaults({ services: [] }).values()
-
   const hasCoveralls = values.services.indexOf('coveralls') > -1
-  const appDeps = values.ts ? dependencies.concat(tsDeps) : dependencies.concat(jsDeps)
 
-  if (hasCoveralls) {
-    appDeps.push('coveralls')
-    appDeps.push('nyc')
+  if (values.ts) {
+    JsPreset.uninstall()
+    TsPreset.install(baseDependencies)
+  } else {
+    TsPreset.uninstall()
+    JsPreset.install(baseDependencies)
   }
 
-  /**
-   * Install all required dependencies
-   */
-  install(appDeps)
-
-  /**
-   * Remove redundant dependencies
-   */
-  uninstall(values.ts ? jsDeps : tsDeps)
+  if (hasCoveralls) {
+    CoverallsPreset.install()
+  } else {
+    CoverallsPreset.uninstall()
+  }
 
   const pkgFile = packageJson()
 
   /**
-   * Add required scripts
+   * Below are common scripts for both Typescript and Javascript
+   * projects.
    */
+  pkgFile.setScript('test', hasCoveralls ? 'nyc japa' : 'japa')
   pkgFile.setScript('commit', 'git-cz')
   pkgFile.setScript('pretest', 'npm run lint')
-
-  /**
-   * Have different set of scripts when coveralls is used
-   * as a service
-   */
-  if (hasCoveralls) {
-    pkgFile.setScript('test', 'nyc japa')
-    pkgFile.setScript('coverage', 'nyc report --reporter=text-lcov | coveralls')
-    pkgFile.appendScript('posttest', 'npm run coverage')
-    pkgFile.set('nyc.exclude', ['test/**'])
-  } else {
-    pkgFile.setScript('test', 'japa')
-  }
-
-  /**
-   * Have a different set of scripts when project uses typescript
-   */
-  if (values.ts) {
-    pkgFile.setScript('lint', 'tslint --project tsconfig.json')
-    pkgFile.setScript('clean', 'del dist')
-    pkgFile.setScript('compile', 'npm run lint && npm run clean && tsc')
-    pkgFile.prependScript('build', 'npm run lint && npm run clean && webpack')
-    pkgFile.setScript('prepublishOnly', 'npm run build')
-  } else {
-    pkgFile.setScript('lint', 'standard')
-  }
-
-  /**
-   * Set config for commitizen. It will show prompts
-   * to build a proper commit message.
-   */
   pkgFile.set('config.commitizen.path', 'cz-conventional-changelog')
 
+  if (values.ts) {
+    JsPreset.down(pkgFile, hasCoveralls)
+    TsPreset.up(pkgFile, hasCoveralls)
+  } else {
+    TsPreset.down(pkgFile, hasCoveralls)
+    JsPreset.up(pkgFile, hasCoveralls)
+  }
+
+  if (hasCoveralls) {
+    CoverallsPreset.up(pkgFile)
+  } else {
+    CoverallsPreset.down(pkgFile)
+  }
+
   /**
-   * Save package.json
+   * Save the package file
    */
   pkgFile.save()
 
@@ -88,14 +72,6 @@ function task (config) {
    */
   const japaFile = file('japaFile.js')
   japaFile.save(buildJapaFile(japaFile.get(), values.ts))
-
-  /**
-   * Create tsconfig.json and tslint.json files
-   */
-  if (values.ts) {
-    json('tsconfig.json').merge({ extends: './node_modules/@adonisjs/mrm-preset/_tsconfig' }).save()
-    json('tslint.json').merge({ extends: ['@adonisjs/mrm-preset/_tslint'], rules: {} }).save()
-  }
 }
 
 task.description = 'Adds package.json file'

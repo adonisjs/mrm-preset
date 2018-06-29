@@ -9,7 +9,13 @@
 
 const inquirer = require('inquirer')
 const { json } = require('mrm-core')
+const debug = require('debug')('adonis:mrm-init')
 
+/**
+ * Asking for project language
+ *
+ * @type {Object}
+ */
 const projectLang = {
   type: 'list',
   choices: ['Typescript', 'Javascript'],
@@ -17,12 +23,22 @@ const projectLang = {
   name: 'lang'
 }
 
+/**
+ * Whether written by the core team or not
+ *
+ * @type {Object}
+ */
 const isCore = {
   type: 'confirm',
   message: 'Is it a package written by the core team',
   name: 'core'
 }
 
+/**
+ * The project license
+ *
+ * @type {Object}
+ */
 const license = {
   type: 'list',
   choices: ['Apache-2.0', 'BSD-2-Clause', 'BSD-3-Clause', 'MIT', 'Unlicense'],
@@ -30,6 +46,11 @@ const license = {
   name: 'license'
 }
 
+/**
+ * Services to be used by the project
+ *
+ * @type {Object}
+ */
 const services = {
   type: 'checkbox',
   message: 'Select the CI services you are planning to use',
@@ -50,6 +71,12 @@ const services = {
   name: 'services'
 }
 
+/**
+ * The appveyor username. Only asked when services
+ * has `appveyor` in it
+ *
+ * @type {Object}
+ */
 const appveyorUsername = {
   type: 'input',
   message: 'Enter appveyor username',
@@ -59,22 +86,29 @@ const appveyorUsername = {
   name: 'appveyorUsername'
 }
 
+/**
+ * Running the task, asking questions and create a project
+ * specific config file.
+ *
+ * @method task
+ *
+ * @return {void}
+ */
 async function task () {
   const answers = await inquirer.prompt([projectLang, isCore, license, services, appveyorUsername])
 
   const file = json('config.json')
-
-  file.set({
+  const fileContent = {
     core: answers.core,
     ts: answers.lang === 'Typescript',
     license: answers.license,
-    services: answers.services
-  })
-
-  if (answers.appveyorUsername) {
-    file.merge({ appveyorUsername: answers.appveyorUsername })
+    services: answers.services,
+    appveyorUsername: answers.appveyorUsername
   }
 
+  debug('init %o', fileContent)
+
+  file.set(fileContent)
   file.save()
 }
 

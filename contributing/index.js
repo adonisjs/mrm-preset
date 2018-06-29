@@ -14,6 +14,17 @@ const debug = require('debug')('adonis:mrm-contributing')
 const mergeConfig = require('../utils/mergeConfig')
 const saveFile = require('../utils/saveFile')
 
+/**
+ * Creates CONTRIBUTING.md file. The `in template` is dependent
+ * upon various config values. However, the `out template` is
+ * always `CONTRIBUTING.md` file.
+ *
+ * @method task
+ *
+ * @param  {Object} config
+ *
+ * @return {void}
+ */
 function task (config) {
   mergeConfig(config)
 

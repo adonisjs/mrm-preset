@@ -14,6 +14,7 @@ const gitUserName = require('git-user-name')
 const mergeConfig = require('../utils/mergeConfig')
 const Services = require('../utils/Services')
 const gh = require('../utils/ghAttributes')
+const saveFile = require('../utils/saveFile')
 
 function task (config) {
   mergeConfig(config)
@@ -25,6 +26,7 @@ function task (config) {
       repoName: ghAttributes.name,
       owner: ghAttributes.owner,
       ghUsername: gitUserName(),
+      force: false,
       appveyorUsername: ghAttributes.owner
     })
     .require('ghUsername', 'packageName', 'license')
@@ -58,7 +60,7 @@ function task (config) {
   /**
    * Create readme file
    */
-  readme.save()
+  saveFile(readme, values.force)
 }
 
 task.description = 'Add README.md file'

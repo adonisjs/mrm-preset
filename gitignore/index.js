@@ -8,16 +8,17 @@
 */
 
 const { lines } = require('mrm-core')
+const debug = require('debug')('adonis:mrm-gitignore')
 
 /**
- * Creates `.gitignore` file
+ * Creates `.gitignore` file. The template is same regardless of
+ * config.
  *
  * @return {void}
  */
 function task () {
   const file = lines('.gitignore')
-
-  file.add([
+  const linesToWrite = [
     'node_modules',
     'coverage',
     '.DS_STORE',
@@ -28,9 +29,13 @@ function task () {
     '*.sublime-workspace',
     '*.log',
     'yarn.lock',
-    'build'
-  ])
+    'build',
+    'dist'
+  ]
 
+  debug('.gitignore %o', linesToWrite)
+
+  file.add(linesToWrite)
   file.save()
 }
 

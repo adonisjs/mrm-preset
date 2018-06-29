@@ -12,7 +12,7 @@ We love pull requests. And following this guidelines will make your pull request
 
 We make use of [standard](https://standardjs.com/) to lint our code. Standard does not need a config file and comes with set of non-configurable rules.
 
-## Development workflow
+## Development work-flow
 
 Always make sure to lint and test your code before pushing it to the GitHub.
 

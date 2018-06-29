@@ -17,6 +17,13 @@ class CoreTemplates {
     this.features = '.github/ISSUE_TEMPLATE/feature_request.md'
   }
 
+  /**
+   * Create required templates
+   *
+   * @method up
+   *
+   * @return {void}
+   */
   up () {
     debug('using templates: %o', [this.issues, this.features])
 
@@ -24,6 +31,13 @@ class CoreTemplates {
     template(this.features, join(__dirname, 'templates', 'features.md')).apply().save()
   }
 
+  /**
+   * Remove previously created templates
+   *
+   * @method down
+   *
+   * @return {void}
+   */
   down () {
     debug('removing templates: %o', [this.issues, this.features])
 
