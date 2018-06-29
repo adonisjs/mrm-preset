@@ -8,6 +8,7 @@
 */
 
 const { packageJson, file } = require('mrm-core')
+const { execSync } = require('child_process')
 
 const mergeConfig = require('../utils/mergeConfig')
 const buildJapaFile = require('../utils/buildJapaFile')
@@ -20,10 +21,22 @@ const baseDependencies = ['japa', 'japa-cli', 'cz-conventional-changelog', 'comm
 function task (config) {
   mergeConfig(config)
 
+  /**
+   * Create package.json file, if missing
+   */
+  const initialPkgFile = packageJson()
+  if (!initialPkgFile.exists()) {
+    execSync('npm init --yes')
+  }
+
   const values = config.defaults({ services: [] }).values()
   const hasCoveralls = values.services.indexOf('coveralls') > -1
   const hasAppVeyor = values.services.indexOf('appveyor') > -1
 
+  /**
+   * Installing required dependencies and removing
+   * unwanted dependencies
+   */
   if (values.ts) {
     JsPreset.uninstall()
     TsPreset.install(baseDependencies)
@@ -32,6 +45,9 @@ function task (config) {
     JsPreset.install(baseDependencies)
   }
 
+  /**
+   * Install coveralls dependencies if required
+   */
   if (hasCoveralls) {
     CoverallsPreset.install()
   } else {
@@ -44,18 +60,26 @@ function task (config) {
    * Below are common scripts for both Typescript and Javascript
    * projects.
    */
+  pkgFile.setScript('mrm', '--preset=@adonisjs/mrm-preset')
   pkgFile.setScript('test', hasCoveralls ? 'nyc japa' : 'japa')
   pkgFile.setScript('commit', 'git-cz')
   pkgFile.setScript('pretest', 'npm run lint')
   pkgFile.appendScript('prepublishOnly', 'pkg-ok')
   pkgFile.set('config.commitizen.path', 'cz-conventional-changelog')
 
+  /**
+   * Adding appveyor related scripts
+   */
   if (hasAppVeyor) {
     pkgFile.setScript('test:win', './node_modules/japa-cli/index.js')
   } else {
     pkgFile.removeScript('test:win')
   }
 
+  /**
+   * Adding Typescript or Javascript related
+   * scripts
+   */
   if (values.ts) {
     JsPreset.down(pkgFile, hasCoveralls)
     TsPreset.up(pkgFile, hasCoveralls)
@@ -64,6 +88,9 @@ function task (config) {
     JsPreset.up(pkgFile, hasCoveralls)
   }
 
+  /**
+   * Adding coveralls related scripts
+   */
   if (hasCoveralls) {
     CoverallsPreset.up(pkgFile)
   } else {
