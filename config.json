@@ -1,1 +1,19 @@
-{}
+{
+  "aliases": {
+    "setup": [
+      "init",
+      "all"
+    ],
+    "all": [
+      "appveyor",
+      "contributing",
+      "editorconfig",
+      "github",
+      "gitignore",
+      "license",
+      "package",
+      "readme",
+      "travis"
+    ]
+  }
+}
