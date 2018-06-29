@@ -35,6 +35,39 @@ const isCore = {
 }
 
 /**
+ * The minimum node version supported by the project.
+ *
+ * @type {Object}
+ */
+const minNodeVersion = {
+  type: 'list',
+  message: 'Select the minimum node version your project will support',
+  name: 'minNodeVersion',
+  choices: [
+    {
+      name: '8.0.0',
+      value: '8.0.0'
+    },
+    {
+      name: '8.9.0 (LTS carbon)',
+      value: '8.9.0'
+    },
+    {
+      name: '8.11.3 (Latest LTS carbon)',
+      value: '8.11.3'
+    },
+    {
+      name: '9.0.0',
+      value: '9.0.0'
+    },
+    {
+      name: '10.0.0',
+      value: '10.0.0'
+    }
+  ]
+}
+
+/**
  * The project license
  *
  * @type {Object}
@@ -95,15 +128,28 @@ const appveyorUsername = {
  * @return {void}
  */
 async function task () {
-  const answers = await inquirer.prompt([projectLang, isCore, license, services, appveyorUsername])
-
   const file = json('config.json')
+  const existingAnswers = file.get()
+
+  /**
+   * Fill existing values
+   */
+  projectLang.default = existingAnswers.ts ? 'Typescript' : 'Javascript'
+  minNodeVersion.default = existingAnswers.minNodeVersion
+  isCore.default = existingAnswers.core
+  license.default = existingAnswers.license
+  services.default = existingAnswers.services
+  appveyorUsername.default = existingAnswers.appveyorUsername
+
+  const answers = await inquirer.prompt([projectLang, minNodeVersion, isCore, license, services, appveyorUsername])
+
   const fileContent = {
     core: answers.core,
     ts: answers.lang === 'Typescript',
     license: answers.license,
     services: answers.services,
-    appveyorUsername: answers.appveyorUsername
+    appveyorUsername: answers.appveyorUsername,
+    minNodeVersion: answers.minNodeVersion
   }
 
   debug('init %o', fileContent)

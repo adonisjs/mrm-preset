@@ -22,6 +22,7 @@ function task (config) {
 
   const values = config.defaults({ services: [] }).values()
   const hasCoveralls = values.services.indexOf('coveralls') > -1
+  const hasAppVeyor = values.services.indexOf('appveyor') > -1
 
   if (values.ts) {
     JsPreset.uninstall()
@@ -47,6 +48,12 @@ function task (config) {
   pkgFile.setScript('commit', 'git-cz')
   pkgFile.setScript('pretest', 'npm run lint')
   pkgFile.set('config.commitizen.path', 'cz-conventional-changelog')
+
+  if (hasAppVeyor) {
+    pkgFile.setScript('test:win', './node_modules/japa-cli/index.js')
+  } else {
+    pkgFile.removeScript('test:win')
+  }
 
   if (values.ts) {
     JsPreset.down(pkgFile, hasCoveralls)
