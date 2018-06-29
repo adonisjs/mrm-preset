@@ -1,3 +1,22 @@
+<a name="1.0.2"></a>
+## [1.0.2](https://github.com/adonisjs/mrm-preset/compare/v1.0.1...v1.0.2) (2018-06-29)
+
+
+### Bug Fixes
+
+* **gitignore:** ignore build directory for typescript ([c54e414](https://github.com/adonisjs/mrm-preset/commit/c54e414))
+
+
+### Features
+
+* **aliases:** add task aliases ([79f568f](https://github.com/adonisjs/mrm-preset/commit/79f568f))
+* **appveyor:** add task for appveyor ([e536df9](https://github.com/adonisjs/mrm-preset/commit/e536df9))
+* **init:** ask for git origin url ([4e2c114](https://github.com/adonisjs/mrm-preset/commit/4e2c114))
+* **package:** add new scripts for typescript projects ([3a5b7f4](https://github.com/adonisjs/mrm-preset/commit/3a5b7f4))
+* **travis:** add travis task ([eeeeaa0](https://github.com/adonisjs/mrm-preset/commit/eeeeaa0))
+
+
+
 <a name="1.0.1"></a>
 ## [1.0.1](https://github.com/adonisjs/mrm-preset/compare/v1.0.0...v1.0.1) (2018-06-26)
 
