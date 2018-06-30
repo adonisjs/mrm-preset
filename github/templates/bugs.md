@@ -1,3 +1,8 @@
+---
+name: Bug report
+about: Report identified bugs
+---
+
 <!-- CLICK "Preview" FOR INSTRUCTIONS IN A MORE READABLE FORMAT -->
 
 ## Prerequisites
