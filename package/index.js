@@ -60,12 +60,13 @@ function task (config) {
    * Below are common scripts for both Typescript and Javascript
    * projects.
    */
-  pkgFile.setScript('mrm', '--preset=@adonisjs/mrm-preset')
+  pkgFile.setScript('mrm', 'mrm --preset=@adonisjs/mrm-preset')
   pkgFile.setScript('test', hasCoveralls ? 'nyc japa' : 'japa')
   pkgFile.setScript('commit', 'git-cz')
   pkgFile.setScript('pretest', 'npm run lint')
   pkgFile.appendScript('prepublishOnly', 'pkg-ok')
   pkgFile.set('config.commitizen.path', 'cz-conventional-changelog')
+  pkgFile.set('nyc.exclude', ['test', 'japaFile.js'])
 
   /**
    * Adding appveyor related scripts

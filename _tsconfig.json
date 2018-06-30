@@ -5,14 +5,11 @@
     "declaration": true,
     "moduleResolution": "node",
     "outDir": "../../../build",
-    "rootDir": "../../..",
     "strictNullChecks": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": [
-    "../../../*"
-  ],
   "exclude": [
-    "../../../node_modules"
+    "../../../node_modules",
+    "../../../build"
   ]
 }
