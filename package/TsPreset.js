@@ -65,6 +65,7 @@ class TsPreset {
     pkgFile.setScript('compile', 'npm run lint && npm run clean && tsc')
     pkgFile.setScript('build', 'npm run compile')
     pkgFile.setScript('prepublishOnly', 'npm run build')
+    pkgFile.set('nyc.extension', ['.ts'])
 
     debug('creating files %o', ['tsconfig.json', 'tslint.json'])
 
@@ -90,6 +91,7 @@ class TsPreset {
     pkgFile.removeScript('compile')
     pkgFile.removeScript('build')
     pkgFile.removeScript('prepublishOnly')
+    pkgFile.unset('nyc.extension', ['.ts'])
   }
 }
 

@@ -66,6 +66,7 @@ function task (config) {
   pkgFile.setScript('pretest', 'npm run lint')
   pkgFile.appendScript('prepublishOnly', 'pkg-ok')
   pkgFile.set('config.commitizen.path', 'cz-conventional-changelog')
+  pkgFile.set('nyc.exclude', ['test', 'japaFile.js'])
 
   /**
    * Adding appveyor related scripts
