@@ -1,3 +1,13 @@
+<a name="1.0.6"></a>
+## [1.0.6](https://github.com/adonisjs/mrm-preset/compare/v1.0.5...v1.0.6) (2018-06-30)
+
+
+### Bug Fixes
+
+* **license:** fix license task to pull github username ([6e6f29d](https://github.com/adonisjs/mrm-preset/commit/6e6f29d))
+
+
+
 <a name="1.0.5"></a>
 ## [1.0.5](https://github.com/adonisjs/mrm-preset/compare/v1.0.4...v1.0.5) (2018-06-30)
 

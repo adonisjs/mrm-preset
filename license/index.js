@@ -9,10 +9,11 @@
 
 const createLicense = require('mrm-task-license')
 const mergeConfig = require('../utils/mergeConfig')
+const gitUserName = require('git-user-name')
 
 function task (config) {
   mergeConfig(config)
-  config.values().licenseFile = 'LICENSE.md'
+  config.defaults({ licenseFile: 'LICENSE.md', name: gitUserName() })
   createLicense(config)
 }
 
