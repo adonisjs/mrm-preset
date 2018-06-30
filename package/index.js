@@ -60,7 +60,7 @@ function task (config) {
    * Below are common scripts for both Typescript and Javascript
    * projects.
    */
-  pkgFile.setScript('mrm', '--preset=@adonisjs/mrm-preset')
+  pkgFile.setScript('mrm', 'mrm --preset=@adonisjs/mrm-preset')
   pkgFile.setScript('test', hasCoveralls ? 'nyc japa' : 'japa')
   pkgFile.setScript('commit', 'git-cz')
   pkgFile.setScript('pretest', 'npm run lint')

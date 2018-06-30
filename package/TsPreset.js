@@ -61,7 +61,7 @@ class TsPreset {
    */
   up (pkgFile) {
     pkgFile.setScript('lint', 'tslint --project tsconfig.json')
-    pkgFile.setScript('clean', 'del dist')
+    pkgFile.setScript('clean', 'del build')
     pkgFile.setScript('compile', 'npm run lint && npm run clean && tsc')
     pkgFile.setScript('build', 'npm run compile')
     pkgFile.setScript('prepublishOnly', 'npm run build')
