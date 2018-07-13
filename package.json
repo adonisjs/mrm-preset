@@ -1,6 +1,6 @@
 {
   "name": "@adonisjs/mrm-preset",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "MRM preset used by adonisjs for all core packages",
   "main": "config.json",
   "scripts": {

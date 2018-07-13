@@ -1,3 +1,14 @@
+<a name="1.0.8"></a>
+## [1.0.8](https://github.com/adonisjs/mrm-preset/compare/v1.0.7...v1.0.8) (2018-07-13)
+
+
+### Features
+
+* **task:** add typedoc task ([400cf46](https://github.com/adonisjs/mrm-preset/commit/400cf46))
+* **tslint:** add rule for max-line-length ([d790704](https://github.com/adonisjs/mrm-preset/commit/d790704))
+
+
+
 <a name="1.0.7"></a>
 ## [1.0.7](https://github.com/adonisjs/mrm-preset/compare/v1.0.6...v1.0.7) (2018-06-30)
 
