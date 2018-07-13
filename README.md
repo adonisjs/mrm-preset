@@ -84,6 +84,7 @@ In case, you want to force update these files, make sure to pass `--config:force
 - [Package.json](#packagejson-file-sync)
 - [Travis](#travis-sync)
 - [Appveyor](#appveyor-sync)
+- [TypeDoc](#typedoc-sync)
 
 ### Gitignore (sync)
 
@@ -266,4 +267,35 @@ Also appveyor is considered as a secondary CI and hence coverage is not reported
 
 ```bash
 npm run mrm appveyor
+```
+
+### TypeDoc (sync)
+The typedoc task will add [typedoc](https://github.com/TypeStrong/typedoc) as a dev dependency, with bare miminum config and creates the docs at the `build` step.
+
+This task will peform following actions.
+- Add `typedoc.js` file to the project root (if missing).
+- Update `build` script to build docs using `typedoc` command.
+- Add `typedoc`, `typedoc-plugin-external-module-name` and `typedoc-plugin-single-line-tags` dependencies.
+
+Following is the default config file and you are free to override all values.
+
+```js
+const defaultConfig = {
+  out: 'docs',
+  tsconfig: 'tsconfig.json',
+  exclude: [
+    '**/test/*.ts'
+  ],
+  excludeExternals: true,
+  excludeNotExported: true,
+  theme: 'default'
+}
+```
+
+The `typedoc.js` file in your project will require `@adonisjs/mrm-preset/_tyepdoc.js` file and can optionally override options by passing an object.
+
+```js
+module.exports = require('@adonisjs/mrm-preset/_typedoc.js')({
+  out: 'api-docs'
+})
 ```
