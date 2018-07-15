@@ -1,3 +1,13 @@
+<a name="1.0.9"></a>
+## [1.0.9](https://github.com/adonisjs/mrm-preset/compare/v1.0.8...v1.0.9) (2018-07-15)
+
+
+### Bug Fixes
+
+* **package:** fix test:win command ([ce3e16d](https://github.com/adonisjs/mrm-preset/commit/ce3e16d))
+
+
+
 <a name="1.0.8"></a>
 ## [1.0.8](https://github.com/adonisjs/mrm-preset/compare/v1.0.7...v1.0.8) (2018-07-13)
 

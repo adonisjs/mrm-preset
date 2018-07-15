@@ -72,7 +72,7 @@ function task (config) {
    * Adding appveyor related scripts
    */
   if (hasAppVeyor) {
-    pkgFile.setScript('test:win', './node_modules/japa-cli/index.js')
+    pkgFile.setScript('test:win', 'node ./node_modules/japa-cli/index.js')
   } else {
     pkgFile.removeScript('test:win')
   }
