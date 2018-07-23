@@ -1,3 +1,13 @@
+<a name="1.0.10"></a>
+## [1.0.10](https://github.com/adonisjs/mrm-preset/compare/v1.0.9...v1.0.10) (2018-07-23)
+
+
+### Features
+
+* **gitignore:** add package-lock.json file to task ([785dbcc](https://github.com/adonisjs/mrm-preset/commit/785dbcc))
+
+
+
 <a name="1.0.9"></a>
 ## [1.0.9](https://github.com/adonisjs/mrm-preset/compare/v1.0.8...v1.0.9) (2018-07-15)
 
