@@ -14,15 +14,15 @@
     "debug": "^3.1.0",
     "deep-extend": "^0.6.0",
     "git-user-name": "^2.0.0",
-    "inquirer": "^6.0.0",
-    "mrm-core": "^3.1.1",
+    "inquirer": "^6.1.0",
+    "mrm-core": "^3.2.0",
     "mrm-task-license": "^1.2.2",
     "parse-github-url": "^1.0.2",
-    "recast": "^0.15.0"
+    "recast": "^0.15.3"
   },
   "devDependencies": {
     "cz-conventional-changelog": "^2.1.0",
-    "mrm": "^1.1.1",
+    "mrm": "^1.2.1",
     "standard": "^11.0.1"
   },
   "config": {
