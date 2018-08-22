@@ -2,12 +2,19 @@
   "compilerOptions": {
     "target": "ES2016",
     "module": "commonjs",
+    "lib": ["ES7"],
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "removeComments": true,
     "declaration": true,
     "moduleResolution": "node",
     "outDir": "../../../build",
     "strictNullChecks": true,
     "allowSyntheticDefaultImports": true
   },
+  "include": [
+    "../../../**/*"
+  ],
   "exclude": [
     "../../../node_modules",
     "../../../build"
