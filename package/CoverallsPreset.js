@@ -53,7 +53,6 @@ class CoverallsPreset {
    */
   up (pkgFile) {
     pkgFile.setScript('coverage', 'nyc report --reporter=text-lcov | coveralls')
-    pkgFile.setScript('posttest', 'npm run coverage')
   }
 
   /**

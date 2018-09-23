@@ -30,6 +30,7 @@ function task (config) {
     .set('node_js', ['node', values.minNodeVersion])
     .set('sudo', false)
     .set('install', ['npm install'])
+    .set('after_script', ['npm run coverage'])
 
   /**
    * For core projects setup slack notifications
