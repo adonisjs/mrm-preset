@@ -66,7 +66,6 @@ class CoverallsPreset {
    */
   down (pkgFile) {
     pkgFile.removeScript('coverage')
-    pkgFile.removeScript('posttest')
   }
 }
 
