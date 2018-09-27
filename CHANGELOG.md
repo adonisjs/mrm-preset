@@ -1,3 +1,13 @@
+<a name="1.0.12"></a>
+## [1.0.12](https://github.com/adonisjs/mrm-preset/compare/v1.0.11...v1.0.12) (2018-09-27)
+
+
+### Features
+
+* **japa:** create blueprint for japa 2 ([0120ca9](https://github.com/adonisjs/mrm-preset/commit/0120ca9))
+
+
+
 <a name="1.0.11"></a>
 ## [1.0.11](https://github.com/adonisjs/mrm-preset/compare/v1.0.10...v1.0.11) (2018-08-22)
 

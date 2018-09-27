@@ -15,7 +15,7 @@ function task (config) {
 
   const values = config.defaults({
     services: [],
-    minNodeVersion: '8.0.0',
+    minNodeVersion: '8.12.0',
     core: false
   }).values()
 
