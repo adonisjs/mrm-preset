@@ -1,3 +1,13 @@
+<a name="1.0.13"></a>
+## [1.0.13](https://github.com/adonisjs/mrm-preset/compare/v1.0.12...v1.0.13) (2018-09-27)
+
+
+### Features
+
+* **japa:** adjust npm scripts as per japa@2 ([a4d686e](https://github.com/adonisjs/mrm-preset/commit/a4d686e))
+
+
+
 <a name="1.0.12"></a>
 ## [1.0.12](https://github.com/adonisjs/mrm-preset/compare/v1.0.11...v1.0.12) (2018-09-27)
 

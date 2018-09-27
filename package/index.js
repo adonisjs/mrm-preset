@@ -31,7 +31,6 @@ function task (config) {
 
   const values = config.defaults({ services: [] }).values()
   const hasCoveralls = values.services.indexOf('coveralls') > -1
-  const hasAppVeyor = values.services.indexOf('appveyor') > -1
 
   /**
    * Installing required dependencies and removing
@@ -61,21 +60,12 @@ function task (config) {
    * projects.
    */
   pkgFile.setScript('mrm', 'mrm --preset=@adonisjs/mrm-preset')
-  pkgFile.setScript('test', hasCoveralls ? 'nyc japa' : 'japa')
+  pkgFile.setScript('test', hasCoveralls ? 'nyc node japaFile.js' : 'node japaFile.js')
   pkgFile.setScript('commit', 'git-cz')
   pkgFile.setScript('pretest', 'npm run lint')
   pkgFile.appendScript('prepublishOnly', 'pkg-ok')
   pkgFile.set('config.commitizen.path', 'cz-conventional-changelog')
-  pkgFile.set('nyc.exclude', ['test', 'japaFile.js'])
-
-  /**
-   * Adding appveyor related scripts
-   */
-  if (hasAppVeyor) {
-    pkgFile.setScript('test:win', 'node ./node_modules/japa-cli/index.js')
-  } else {
-    pkgFile.removeScript('test:win')
-  }
+  pkgFile.set('nyc.exclude', ['test'])
 
   /**
    * Adding Typescript or Javascript related
