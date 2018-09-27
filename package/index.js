@@ -16,7 +16,7 @@ const JsPreset = require('./JsPreset')
 const TsPreset = require('./TsPreset')
 const CoverallsPreset = require('./CoverallsPreset')
 
-const baseDependencies = ['japa', 'japa-cli', 'cz-conventional-changelog', 'commitizen', 'pkg-ok']
+const baseDependencies = ['japa', 'cz-conventional-changelog', 'commitizen', 'pkg-ok']
 
 function task (config) {
   mergeConfig(config)

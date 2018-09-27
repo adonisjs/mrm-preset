@@ -12,16 +12,18 @@ const recast = require('recast')
 /**
  * Added to japaFile.js for Typescript
  */
-const japaCliTsContent = `const cli = require('japa/cli')
-cli.run('test/**/*.spec.ts')
-`
+const japaCliTsContent = `const { configure } = require('japa')
+configure({
+  files: ['test/**/*.spec.ts']
+})`
 
 /**
  * Added to japaFile.js for Javascript
  */
-const japaCliJsContent = `const cli = require('japa/cli')
-cli.run('test/**/*.spec.js')
-`
+const japaCliJsContent = `const { configure } = require('japa')
+configure({
+  files: ['test/**/*.spec.js']
+})`
 
 /**
  * Add to japaFile.js when project uses Typescript
@@ -70,7 +72,7 @@ module.exports = function (existingContent, ts) {
    */
   recast.types.visit(ast, {
     visitCallExpression ({ node }) {
-      if (!japaCliRequired && getRequireName(node) === 'japa/cli') {
+      if (!japaCliRequired && getRequireName(node) === 'japa') {
         japaCliRequired = true
       }
 
