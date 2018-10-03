@@ -40,7 +40,7 @@ function task (config) {
     core.down()
   }
 
-  template(prTemplate, join(__dirname, 'templates', 'pr.md')).apply({ repo: values.repo }).save()
+  template(prTemplate, join(__dirname, 'templates', 'pr.md')).apply(ghAttributes).save()
 }
 
 task.description = 'Adds Github related templates'
