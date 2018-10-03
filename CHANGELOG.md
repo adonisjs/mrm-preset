@@ -1,3 +1,19 @@
+<a name="1.0.14"></a>
+## [1.0.14](https://github.com/adonisjs/mrm-preset/compare/v1.0.13...v1.0.14) (2018-10-03)
+
+
+### Bug Fixes
+
+* **github:** make correct url inside pr.md template ([3737993](https://github.com/adonisjs/mrm-preset/commit/3737993))
+
+
+### Features
+
+* **config:** add validateCommit task to all tasks array ([4fa127b](https://github.com/adonisjs/mrm-preset/commit/4fa127b))
+* **task:** add validateCommit task to keep commits consistent ([ac73d37](https://github.com/adonisjs/mrm-preset/commit/ac73d37))
+
+
+
 <a name="1.0.13"></a>
 ## [1.0.13](https://github.com/adonisjs/mrm-preset/compare/v1.0.12...v1.0.13) (2018-09-27)
 
