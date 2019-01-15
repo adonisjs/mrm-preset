@@ -10,15 +10,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "chalk": "^2.4.1",
-    "debug": "^4.0.1",
+    "chalk": "^2.4.2",
+    "debug": "^4.1.1",
     "deep-extend": "^0.6.0",
     "git-user-name": "^2.0.0",
-    "inquirer": "^6.2.0",
+    "inquirer": "^6.2.1",
     "mrm-core": "^3.3.0",
     "mrm-task-license": "^1.2.3",
     "parse-github-url": "^1.0.2",
-    "recast": "^0.15.5"
+    "recast": "^0.16.2"
   },
   "devDependencies": {
     "cz-conventional-changelog": "^2.1.0",
