@@ -14,7 +14,8 @@
       "package",
       "readme",
       "travis",
-      "validateCommit"
+      "validateCommit",
+      "readme-toc"
     ]
   }
 }
