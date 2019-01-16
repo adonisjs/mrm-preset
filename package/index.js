@@ -64,6 +64,7 @@ function task (config) {
   pkgFile.setScript('pretest', 'npm run lint')
   pkgFile.appendScript('prepublishOnly', 'pkg-ok')
   pkgFile.set('nyc.exclude', ['test'])
+  pkgFile.set('license', values.license)
 
   /**
    * Adding Typescript or Javascript related
