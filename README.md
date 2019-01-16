@@ -1,3 +1,31 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+## Table of contents
+
+- [What is MRM?](#what-is-mrm)
+- [What is MRM Preset?](#what-is-mrm-preset)
+- [Getting started](#getting-started)
+- [Tasks](#tasks)
+  - [Appveyor](#appveyor)
+  - [Contributing.md template](#contributingmd-template)
+  - [Editorconfig file](#editorconfig-file)
+  - [Github templates](#github-templates)
+  - [Gitignore template](#gitignore-template)
+  - [License template](#license-template)
+  - [Package file generation](#package-file-generation)
+    - [Testing](#testing)
+    - [Linter](#linter)
+    - [Coverage reporting](#coverage-reporting)
+    - [Typescript setup](#typescript-setup)
+    - [Pkg ok](#pkg-ok)
+  - [Readme file](#readme-file)
+  - [Readme file TOC](#readme-file-toc)
+  - [Travis](#travis)
+  - [TypeDoc](#typedoc)
+  - [Validate commit](#validate-commit)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ![](https://res.cloudinary.com/adonisjs/image/upload/q_100/v1547549861/mrm_entbte.png)
 
 AdonisJs preset for [mrm](https://github.com/sapegin/mrm) to keep the project configuration files **in-sync** and **consistent across** various projects.
