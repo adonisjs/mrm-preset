@@ -13,7 +13,7 @@ function isAllowed (itemPath) {
   }
 
   const tokens = itemPath.split(sep)
-  return ['node_modules', '.git', 'bin'].indexOf(tokens[tokens.length - 1]) === -1
+  return ['node_modules', '.git', 'bin', 'init', 'utils'].indexOf(tokens[tokens.length - 1]) === -1
 }
 
 /**

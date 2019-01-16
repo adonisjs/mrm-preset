@@ -19,6 +19,11 @@ function task (config) {
   }).values()
 
   const appveyor = values.services.indexOf('appveyor') > -1
+
+  /**
+   * Remove `appveyor.yml` file when `appveyor` is missing inside
+   * services array.
+   */
   if (!appveyor) {
     deleteFiles(['appveyor.yml'])
     return
