@@ -1,3 +1,7 @@
+![](https://res.cloudinary.com/adonisjs/image/upload/q_100/v1547549861/mrm_entbte.png)
+
+AdonisJs preset for [mrm](https://github.com/sapegin/mrm) to keep the project configuration files **in-sync** and **consistent across** various projects.
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 ## Table of contents
@@ -25,10 +29,6 @@
   - [Validate commit](#validate-commit)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
-![](https://res.cloudinary.com/adonisjs/image/upload/q_100/v1547549861/mrm_entbte.png)
-
-AdonisJs preset for [mrm](https://github.com/sapegin/mrm) to keep the project configuration files **in-sync** and **consistent across** various projects.
 
 ## What is MRM?
 
