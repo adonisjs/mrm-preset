@@ -1,3 +1,20 @@
+<a name="1.0.15"></a>
+## [1.0.15](https://github.com/adonisjs/mrm-preset/compare/v1.0.14...v1.0.15) (2019-01-16)
+
+
+### Bug Fixes
+
+* **tsconfig:** add test folder ([#6](https://github.com/adonisjs/mrm-preset/issues/6)) ([902cdf3](https://github.com/adonisjs/mrm-preset/commit/902cdf3))
+* **tsconfig:** correct lib value ([#7](https://github.com/adonisjs/mrm-preset/issues/7)) ([3a9a0ae](https://github.com/adonisjs/mrm-preset/commit/3a9a0ae))
+
+
+### Features
+
+* **readme-toc:** add new task to generate readme file toc ([2df5606](https://github.com/adonisjs/mrm-preset/commit/2df5606))
+* **tslint:** add new rules ([3df7de4](https://github.com/adonisjs/mrm-preset/commit/3df7de4))
+
+
+
 <a name="1.0.14"></a>
 ## [1.0.14](https://github.com/adonisjs/mrm-preset/compare/v1.0.13...v1.0.14) (2018-10-03)
 
