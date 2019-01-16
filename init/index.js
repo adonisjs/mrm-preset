@@ -72,8 +72,8 @@ const minNodeVersion = {
       value: '8.9.0'
     },
     {
-      name: '8.11.3 (Latest LTS carbon)',
-      value: '8.11.3'
+      name: '8.12.0 (Latest LTS carbon)',
+      value: '8.12.0'
     },
     {
       name: '9.0.0',

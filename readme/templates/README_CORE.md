@@ -4,7 +4,7 @@ ${servicesBadges}
 
 ## Change log
 
-The change log can be found in the [CHANGELOG.md](https://github.com/${owner}/${repoName}/CHANGELOG.md) file.
+The change log can be found in the [CHANGELOG.md](CHANGELOG.md) file.
 
 ## Contributing
 

@@ -28,9 +28,10 @@ function task () {
     '*.sublime-project',
     '*.sublime-workspace',
     '*.log',
-    'yarn.lock',
     'build',
     'dist',
+    'yarn.lock',
+    'shrinkwrap.yaml',
     'package-lock.json'
   ]
 

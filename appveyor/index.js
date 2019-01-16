@@ -15,10 +15,15 @@ function task (config) {
 
   const values = config.defaults({
     services: [],
-    minNodeVersion: '8.0.0'
+    minNodeVersion: '8.12.0'
   }).values()
 
   const appveyor = values.services.indexOf('appveyor') > -1
+
+  /**
+   * Remove `appveyor.yml` file when `appveyor` is missing inside
+   * services array.
+   */
   if (!appveyor) {
     deleteFiles(['appveyor.yml'])
     return
@@ -28,7 +33,7 @@ function task (config) {
     .set('environment.matrix', [{ 'nodejs_version': 'Stable' }, { 'nodejs_version': values.minNodeVersion }])
     .set('init', 'git config --global core.autocrlf true')
     .set('install', [{ ps: 'Install-Product node $env:nodejs_version' }, 'npm install'])
-    .set('test_script', ['node --version', 'npm --version', 'npm run test:win'])
+    .set('test_script', ['node --version', 'npm --version', 'npm run test'])
     .set('build', 'off')
     .set('clone_depth', 1)
     .set('matrix.fast_finish', true)

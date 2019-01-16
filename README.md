@@ -1,96 +1,139 @@
-# MRM preset Adonis
+![](https://res.cloudinary.com/adonisjs/image/upload/q_100/v1547549861/mrm_entbte.png)
 
-This repo is the preset used by AdonisJs team to manage and keep their config in sync. It contains a bunch of tasks, which can be used to scaffold a new project and also keep the config files in sync.
+AdonisJs preset for [mrm](https://github.com/sapegin/mrm) to keep the project configuration files **in-sync** and **consistent across** various projects.
 
-## How it works?
-All of the tasks exported by this package scaffolds new projects by creating `required config` files and also updates them (if required).
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+## Table of contents
 
-The updates are performed in a way so that your custom changes are preserved. Let's take an example of `.gitignore` file.
+- [What is MRM?](#what-is-mrm)
+- [What is MRM Preset?](#what-is-mrm-preset)
+- [Getting started](#getting-started)
+- [Tasks](#tasks)
+  - [Appveyor](#appveyor)
+  - [Contributing.md template](#contributingmd-template)
+  - [Editorconfig file](#editorconfig-file)
+  - [Github templates](#github-templates)
+  - [Gitignore template](#gitignore-template)
+  - [License template](#license-template)
+  - [Package file generation](#package-file-generation)
+    - [Testing](#testing)
+    - [Linter](#linter)
+    - [Coverage reporting](#coverage-reporting)
+    - [Typescript setup](#typescript-setup)
+    - [Pkg ok](#pkg-ok)
+  - [Readme file](#readme-file)
+  - [Readme file TOC](#readme-file-toc)
+  - [Travis](#travis)
+  - [TypeDoc](#typedoc)
+  - [Validate commit](#validate-commit)
 
-1. Preset default `.gitignore` file.
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-    ```ini
-    node_modules
-    ```
+## What is MRM?
 
-2. You make following changes inside it.
+**You might be curious to know what the heck is MRM?**
 
-    ```diff
-    node_modules
-    + docs
-    ```
+MRM is a command line tool to scaffold new projects. But instead of just creating the initial set of files, it has powerful utilities to update them as well.
 
-3. Preset decides to change the config file and add another directory to be ignored.
+For better explanation, I recommend reading [this article](https://blog.sapegin.me/all/mrm) by the project author.
 
-    ```diff
-    node_modules
-    + coverage
-    ```
+## What is MRM Preset?
 
-4. The final `.gitignore` file will be.
+This module is a custom preset of tasks for MRM and is used by [AdonisJs](https://adonisjs.com) and many other projects I author.
 
-    ```diff
-    node_modules
-    + docs
-    + coverage
-    ```
+You can also create a preset for your own needs. However, just go through the tasks once to see if they fit your needs and that way you can avoid creating your own tasks.
 
-## Setup
-The preset must be installed from npm as follows.
+## Getting started
 
-```bash
-npm i --save-dev @adonisjs/mrm-preset mrm
+Let's quickly learn how to use this preset, before we dig into the specifics of tasks.
+
+```sh
+npm i --save-dev mrm @adonisjs/mrm-preset
 ```
 
-And then run tasks as follows
+Add script to `package.json` file
 
-```bash
-./node_modules/.bin/mrm --preset=@adonisjs/mrm-preset <TASK>
-```
-
-Better will be to create an npm script task.
-
-```json
+```sh
 {
-  "scripts": {
-    "mrm": "mrm --preset=@adonisjs/mrm-preset"
-  }
+ "scripts": {
+   "mrm": "mrm --preset=@adonisjs/mrm-preset"
+ }
 }
 ```
 
-## Config
-The config is picked from the `config.json` file inside the app root. Different tasks may rely optionally on different config values.
+and then run it as follows
 
-## Setup
-You can setup a new project from scratch by running the `setup` task. It will execute all other tasks for you.
-
-```bash
-npm run mrm setup
+```sh
+## Initiate by creating config file
+npm run mrm init
 ```
 
-## Sync or not to sync
-MRM is not only a scaffolding tool, in-fact it makes it possible to keep config files in sync when something changes in the central preset repo. However, some files like `README.md` or `CONTRIBUTING.md` cannot be kept in sync because of their nature. 
-
-In case, you want to force update these files, make sure to pass `--config:force` when executing related tasks.
+```sh
+## Execute all tasks (for new projects)
+npm run mrm all
+```
 
 ## Tasks
+Let's focus on all the tasks supported by AdonisJs preset.
 
-- [Gitignore](#gitignore-sync)
-- [EditorConfig](#editorconfig-sync)
-- [License file](#license-file-sync)
-- [Contributing file](#contributing-file-force-sync)
-- [Readme file](#readme-file-force-sync)
-- [Github templates](#github-templates-sync)
-- [Package.json](#packagejson-file-sync)
-- [Travis](#travis-sync)
-- [Appveyor](#appveyor-sync)
-- [TypeDoc](#typedoc-sync)
+<!-- TASKS START -->
+<!-- DO NOT MODIFY MANUALLY. INSTEAD RUN `npm run docs` TO REGENERATE IT -->
 
-### Gitignore (sync)
+### Appveyor
+Appveyor tasks creates a configuration file `(appveyor.yml)` in the root of your project. The tasks depends on the config file `config.json` and requires following key/value pairs.
 
-Adds/Updates `.gitignore` file to the project root with the following contents.
+```json
+{
+  "services": ["appveyor"],
+  "minNodeVersion": "10.0"
+}
+```
 
-```ini
+To remove support for `appveyor` from your project, just `npm run mrm appveyor` task by removing the `appveyor` keyword from the `services` array. 
+
+```json
+{
+  "services": []
+}
+```
+
+```sh
+npm run mrm appveyor
+```
+
+### Contributing.md template
+Creates `.github/CONTRIBUTING.md` file. This file is shown by Github to users [creating new issues](https://help.github.com/articles/setting-guidelines-for-repository-contributors).
+
+The content of the template is pre-defined and is not customizable. If you want custom template, then it's better to create the file by hand.
+
+1. Template for Typescript
+   The [typescript template](https://github.com/adonisjs/mrm-preset/blob/master/contributing/templates/CONTRIBUTING_TS.md) is used when `ts=true` inside the config file.
+   
+    ```json
+    {
+      "ts": true
+    }
+    ``` 
+
+2. Otherwise the [default template](https://github.com/adonisjs/mrm-preset/blob/master/contributing/templates/CONTRIBUTING.md) will be used.
+### Editorconfig file
+Creates a `.editorconfig` file inside the project root. The editor config file is a way to keep the editor settings consistent regardless of the the editor you open the files in.
+
+You may need a [plugin](https://editorconfig.org/#download) for your editor to make `editorconfig` work.
+
+The file is generated with settings defined inside the [task file](https://github.com/adonisjs/mrm-preset/blob/master/editorconfig/index.js#L20) and again is not customizable.
+### Github templates
+
+Creates issues and PR template for Github. The contents of these templates will be pre-filled anytime someone wants to create a new issue or PR.
+
+1. [Issues template content](https://github.com/adonisjs/mrm-preset/blob/master/github/templates/issues.md)
+2. [PR template](https://github.com/adonisjs/mrm-preset/blob/master/github/templates/pr.md)
+### Gitignore template
+
+Creates `.gitignore` file in the root of your project. Following files and folders are ignored by default. However, you can add more to the template.
+
+```
 node_modules
 coverage
 .DS_STORE
@@ -100,41 +143,20 @@ coverage
 *.sublime-project
 *.sublime-workspace
 *.log
+build
+docs
+dist
 yarn.lock
+shrinkwrap.yaml
+package-lock.json
 ```
 
-### Editorconfig (sync)
 
-Adds/Updates `.editorconfig` file to the project root with the following contents.
+### License template
 
-```ini
-# http://editorconfig.org
+Creates `LICENSE.md` file in the root of your project. 
 
-[*]
-indent_style = space
-indent_size = 2
-end_of_line = lf
-charset = utf-8
-trim_trailing_whitespace = true
-insert_final_newline = true
-
-[*.json]
-insert_final_newline = ignore
-
-[**.min.js]
-indent_style = ignore
-insert_final_newline = ignore
-
-[MakeFile]
-indent_style = tab
-
-[*.md]
-trim_trailing_whitespace = false
-```
-
-### License file (sync)
-
-Creates `LICENSE.md` file inside the project root. By default the contents is of **MIT License**, however you can define a different license type too inside `config.json` file
+You can choose from one of the [available licenses](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-license/templates) when running `npm run init` command or define it by hand inside `config.json` file.
 
 ```json
 {
@@ -142,160 +164,94 @@ Creates `LICENSE.md` file inside the project root. By default the contents is of
 }
 ```
 
-### Contributing file (force sync)
+If not defined, will fallback to `package.json` file or `MIT`.
+### Package file generation
 
-Creates `CONTRIBUTING.md` file inside the project root. This file is **not kept in sync** and hence you are allowed to change it's content freely.
+This tasks does lots of work to install handful of packages and update `package.json` file.
 
-```bash
-npm run mrm contributing
+The list of operations is based on my personal learnings while maintaining open source projects.
 
-# force update
-npm run mrm contributing -- --config:force
-```
+> If your project decides to move between **Javascript** and **Typescript** in between, then this task will take care of removing the unwanted dependencies and install the correct one's.
 
-### Readme file (force sync)
+#### Testing
+The [japa](https://github.com/thetutlage/japa) test runner is installed along side with `japaFile.js`. If your project makes use of Typescript, then the test runner will configured to run `.ts` files.
 
-Creates a minimal `README.md` file inside the project root. Since each project has it's own unique readme, we **do not sync this file**.
+#### Linter
+If using Javascript then [standard](https://standardjs.com/) will be configured, otherwise for Typescript projects [tslint](https://palantir.github.io/tslint/) is used.
 
-Badges are also added for supported services like.
+#### Coverage reporting
+If you select `coveralls` in the list of `services`, then coverage reporting dependencies will be installed and `after_test` hooks are set.
 
-- travis
-- coveralls
-- appveyor
-- npm license
+1. `nyc` is used for collecting coverage report.
+2. `coveralls` node module is used to pipe the coverage report to Coveralls.
 
-```bash
-npm run mrm readme
+#### Typescript setup
+Typescript projects will have additional setup and dependencies to work out of the box.
 
-# force update
-npm run mrm readme -- --config:force
-```
+Following dependencies are installed.
 
-### Github templates (sync)
-Github templates for issues and PR are created inside `.github/ISSUE_TEMPLATE.md` and `.github/PULL_REQUEST_TEMPLATE.md` respectively.
+1. ts-node
+2. typescript
+3. @types/node
+4. tslint
+5. tslint-eslint-rules
 
-```bash
-npm run mrm github
-```
 
-### Package.json file (sync)
-Updates the `package.json` file all required scripts and config for the project. The package file structure and installed dependencies highly depends upon the values of `ts` and `services` inside the `config.json` file.
+And following scripts are defined
 
-#### For Typescript project
-The following dependencies are installed for a Typescript project.
+1. `clean` to clean the build folder before starting the build.
+2. `compile` to compile the Typescript code to Javascript.
+3. `prePublishOnly` to compile before publishing to npm.
 
-```bash
-'ts-node'
-'typescript'
-'@types/node'
-'tslint'
-'tslint-eslint-rules'
-'del-cli'
-```
 
-and following scripts are added to package.json file
+Also `tsconfig.json` and `tslint.json` files will be created. You are free to modify these files
 
-```json
-{
-  "lint": "tslint --project tsconfig.json",
-  "clean": "del dist",
-  "compile": "npm run lint && npm run clean && tsc",
-  "build": "npm run compile",
-  "prepublishOnly": "npm run build"
-}
-```
+#### Pkg ok
 
-#### For Javascript project
-The following dependencies are installed for a Javascript project.
+[pkg-ok](https://npm.im/pkg-ok) is installed to ensure that files that get published to npm does exists. Make sure to read their README file for more info.
 
-```bash
-'standard'
-```
 
-and following scripts are added to package.json file
+### Readme file
+
+Generates a Readme file using a [pre-defined template](https://github.com/adonisjs/mrm-preset/blob/master/readme/templates/README.md). Feel free to change the contents of the file, since it's just a starting point.
+### Readme file TOC
+
+Generates table of contents for the readme file. This tasks registers a `git hook` to automatically generate the TOC before every commit.
+
+Under the hood npm package [doctoc](https://npm.im/doctoc) is used for generating the TOC, so make sure to read their readme file as well.
+
+### Travis 
+Travis tasks creates a configuration file `(.travis.yml)` in the root of your project. The tasks depends on the config file `config.json` and requires following key/value pairs.
 
 ```json
 {
-  "lint": "standard"
+  "services": ["travis"],
+  "minNodeVersion": "10.0"
 }
 ```
 
-#### Coveralls
-When the `services` array has `coveralls` as a value, then following dependencies are installed, along with the following **npm scripts**.
-
-```bash
-'coveralls'
-'nyc'
-```
+To remove support for `travis` from your project, just `npm run mrm travis` task by removing the `travis` keyword from the `services` array.
 
 ```json
 {
-  "coverage": "nyc report --reporter=text-lcov | coveralls",
-  "posttest": "npm run coverage"
+  "services": []
 }
 ```
 
-#### Common config
-The following dependencies and scripts are shared across all project types.
-
-```bash
-'japa',
-'japa-cli',
-'cz-conventional-changelog',
-'commitizen'
-```
-
-```json
-{
-  "test": "japa",
-  "commit": "git-cz",
-  "pretest": "npm run lint",  
-}
-```
-
-### Travis (sync)
-Adds `.travis.yml` file to the project. It relies on the values of `services` and `minNodeVersion` inside the config file.
-
-```bash
+```sh
 npm run mrm travis
 ```
+### TypeDoc
 
-### Appveyor (sync)
-Adds `appveyor.yml` file to the project. It relies on the values of `services` and `minNodeVersion` inside the config file.
+Configures [typedoc](http://typedoc.org/) to generate API documentation for Typescript projects. Along with that, two additional plugins are installed.
 
-Also appveyor is considered as a secondary CI and hence coverage is not reported from appveyor tests.
+- typedoc-plugin-external-module-name
+- typedoc-plugin-single-line-tags
+### Validate commit
 
-```bash
-npm run mrm appveyor
-```
+Configures a git hook to validate the commit messages. This is great, if you want to ensure that contributors to your project must form commit messages as per a given standard.
 
-### TypeDoc (sync)
-The typedoc task will add [typedoc](https://github.com/TypeStrong/typedoc) as a dev dependency, with bare miminum config and creates the docs at the `build` step.
+The default standard used is [conventional-changelog](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-angular) and rules are defined inside this [template](https://github.com/adonisjs/mrm-preset/blob/develop/validateCommit/conventional/template.md), which is copied over to your project `.github` folder for readers reference.
 
-This task will peform following actions.
-- Add `typedoc.js` file to the project root (if missing).
-- Update `build` script to build docs using `typedoc` command.
-- Add `typedoc`, `typedoc-plugin-external-module-name` and `typedoc-plugin-single-line-tags` dependencies.
 
-Following is the default config file and you are free to override all values.
-
-```js
-const defaultConfig = {
-  out: 'docs',
-  tsconfig: 'tsconfig.json',
-  exclude: [
-    '**/test/*.ts'
-  ],
-  excludeExternals: true,
-  excludeNotExported: true,
-  theme: 'default'
-}
-```
-
-The `typedoc.js` file in your project will require `@adonisjs/mrm-preset/_tyepdoc.js` file and can optionally override options by passing an object.
-
-```js
-module.exports = require('@adonisjs/mrm-preset/_typedoc.js')({
-  out: 'api-docs'
-})
-```
+<!-- TASKS END -->

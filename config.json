@@ -13,7 +13,9 @@
       "license",
       "package",
       "readme",
-      "travis"
+      "travis",
+      "validateCommit",
+      "readme-toc"
     ]
   }
 }

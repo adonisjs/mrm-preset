@@ -1,15 +1,23 @@
 {
   "compilerOptions": {
-    "target": "ES2016",
+    "target": "es2017",
     "module": "commonjs",
+    "lib": ["es2017"],
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "removeComments": true,
     "declaration": true,
     "moduleResolution": "node",
     "outDir": "../../../build",
     "strictNullChecks": true,
     "allowSyntheticDefaultImports": true
   },
+  "include": [
+    "../../../**/*"
+  ],
   "exclude": [
     "../../../node_modules",
-    "../../../build"
+    "../../../build",
+    "../../../test"
   ]
 }

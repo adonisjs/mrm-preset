@@ -1,6 +1,6 @@
 {
   "name": "@adonisjs/mrm-preset",
-  "version": "1.0.10",
+  "version": "1.0.15",
   "description": "MRM preset used by adonisjs for all core packages",
   "main": "config.json",
   "scripts": {
@@ -10,24 +10,31 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "chalk": "^2.4.1",
-    "debug": "^3.1.0",
+    "chalk": "^2.4.2",
+    "debug": "^4.1.1",
     "deep-extend": "^0.6.0",
     "git-user-name": "^2.0.0",
-    "inquirer": "^6.0.0",
-    "mrm-core": "^3.1.1",
-    "mrm-task-license": "^1.2.2",
+    "inquirer": "^6.2.1",
+    "mrm-core": "^3.3.0",
+    "mrm-task-license": "^1.2.3",
     "parse-github-url": "^1.0.2",
-    "recast": "^0.15.0"
+    "recast": "^0.16.2"
   },
   "devDependencies": {
     "cz-conventional-changelog": "^2.1.0",
-    "mrm": "^1.1.1",
-    "standard": "^11.0.1"
+    "doctoc": "^1.4.0",
+    "fs-extra": "^7.0.1",
+    "klaw": "^3.0.0",
+    "mrm": "^1.2.1",
+    "standard": "^12.0.1",
+    "yorkie": "^2.0.0"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "gitHooks": {
+    "pre-commit": "node bin/readme.js && doctoc README.md --title='## Table of contents' && git add README.md"
   }
 }

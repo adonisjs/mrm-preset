@@ -7,3 +7,5 @@ Thumbs.db
 *.sublime-workspace
 *.log
 yarn.lock
+shrinkwrap.yaml
+package-lock.json
