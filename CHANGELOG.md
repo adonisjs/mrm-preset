@@ -1,3 +1,13 @@
+<a name="1.0.16"></a>
+## [1.0.16](https://github.com/adonisjs/mrm-preset/compare/1.0.15...1.0.16) (2019-01-17)
+
+
+### Reverts
+
+* **tsconfig:** remove `test` from `excludes` array ([398d008](https://github.com/adonisjs/mrm-preset/commit/398d008))
+
+
+
 <a name="1.0.15"></a>
 ## [1.0.15](https://github.com/adonisjs/mrm-preset/compare/v1.0.14...v1.0.15) (2019-01-16)
 
