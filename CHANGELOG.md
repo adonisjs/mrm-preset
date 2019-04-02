@@ -1,3 +1,12 @@
+## [1.0.20](https://github.com/adonisjs/mrm-preset/compare/1.0.19...1.0.20) (2019-04-02)
+
+
+### Bug Fixes
+
+* **package:** get rid of bin path ([9dc102f](https://github.com/adonisjs/mrm-preset/commit/9dc102f))
+
+
+
 ## [1.0.19](https://github.com/adonisjs/mrm-preset/compare/1.0.18...1.0.19) (2019-04-02)
 
 
