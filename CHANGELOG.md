@@ -1,3 +1,12 @@
+## [1.0.17](https://github.com/adonisjs/mrm-preset/compare/1.0.16...1.0.17) (2019-04-02)
+
+
+### Features
+
+* **circleci:** add circleci task ([5b9a805](https://github.com/adonisjs/mrm-preset/commit/5b9a805))
+
+
+
 <a name="1.0.16"></a>
 ## [1.0.16](https://github.com/adonisjs/mrm-preset/compare/1.0.15...1.0.16) (2019-01-17)
 
