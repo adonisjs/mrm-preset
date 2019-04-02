@@ -14,11 +14,11 @@
     "debug": "^4.1.1",
     "deep-extend": "^0.6.0",
     "git-user-name": "^2.0.0",
-    "inquirer": "^6.2.1",
+    "inquirer": "^6.2.2",
     "mrm-core": "^3.3.0",
     "mrm-task-license": "^1.2.3",
     "parse-github-url": "^1.0.2",
-    "recast": "^0.16.2"
+    "recast": "^0.17.5"
   },
   "devDependencies": {
     "cz-conventional-changelog": "^2.1.0",
