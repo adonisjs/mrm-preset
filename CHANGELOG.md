@@ -1,3 +1,7 @@
+## [1.0.18](https://github.com/adonisjs/mrm-preset/compare/1.0.17...1.0.18) (2019-04-02)
+
+
+
 ## [1.0.17](https://github.com/adonisjs/mrm-preset/compare/1.0.16...1.0.17) (2019-04-02)
 
 
