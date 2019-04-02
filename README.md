@@ -11,6 +11,7 @@ AdonisJs preset for [mrm](https://github.com/sapegin/mrm) to keep the project co
 - [Getting started](#getting-started)
 - [Tasks](#tasks)
   - [Appveyor](#appveyor)
+  - [Circle CI](#circle-ci)
   - [Contributing.md template](#contributingmd-template)
   - [Editorconfig file](#editorconfig-file)
   - [Github templates](#github-templates)
@@ -102,6 +103,27 @@ To remove support for `appveyor` from your project, just `npm run mrm appveyor` 
 npm run mrm appveyor
 ```
 
+### Circle CI 
+Circle CI  tasks creates a configuration file `(.circleci/config.yml)` in the root of your project. The tasks depends on the config file `config.json` and requires following key/value pairs.
+
+```json
+{
+  "services": ["circleci"],
+  "minNodeVersion": "10.0.0"
+}
+```
+
+To remove support for `circleci` from your project, just `npm run mrm circleci` task by removing the `circleci` keyword from the `services` array.
+
+```json
+{
+  "services": []
+}
+```
+
+```sh
+npm run mrm circleci
+```
 
 ### Contributing.md template
 Creates `.github/CONTRIBUTING.md` file. This file is shown by Github to users [creating new issues](https://help.github.com/articles/setting-guidelines-for-repository-contributors).
