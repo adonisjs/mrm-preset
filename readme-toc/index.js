@@ -7,8 +7,7 @@
 * file that was distributed with this source code.
 */
 
-const { packageJson, install, template } = require('mrm-core')
-const { join } = require('path')
+const { packageJson, install } = require('mrm-core')
 
 function task () {
   const pkgFile = packageJson()

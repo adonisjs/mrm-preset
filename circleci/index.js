@@ -35,7 +35,7 @@ function task (config) {
   versions.forEach((version) => {
     circleCiFile.set(`jobs.build_${version}`, {
       docker: [{
-        image: `circleci/node:${version}`,
+        image: `circleci/node:${version}`
       }],
       working_directory: '~/app',
       steps: [
@@ -46,7 +46,7 @@ function task (config) {
           }
         },
         {
-          run: 'npm install',
+          run: 'npm install'
         },
         {
           save_cache: {

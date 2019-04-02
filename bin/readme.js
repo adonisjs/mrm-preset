@@ -42,8 +42,7 @@ function getReadmeContents (taskDir) {
 
 async function patchReadmeFile (tasksDocs) {
   const readmeFile = await readFile(join(BASE_DIR, 'README.md'), 'utf-8')
-  const [mainFile, rest] = readmeFile.split('<!-- TASKS START -->')
-  const [tasks, remainingFile] = rest.split('<!-- TASKS END -->')
+  const [mainFile] = readmeFile.split('<!-- TASKS START -->')
 
   const newContents = [
     mainFile,
