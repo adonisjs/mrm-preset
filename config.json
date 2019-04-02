@@ -10,6 +10,7 @@
       "editorconfig",
       "github",
       "gitignore",
+      "circleci",
       "license",
       "package",
       "readme",
