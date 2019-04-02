@@ -39,9 +39,6 @@
   "gitHooks": {
     "pre-commit": "node bin/readme.js && doctoc README.md --title='## Table of contents' && git add README.md"
   },
-  "bin": {
-    "mrm-preset": "readme.js"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/adonisjs/mrm-preset.git"
