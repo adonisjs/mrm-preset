@@ -5,7 +5,7 @@
   "main": "config.json",
   "scripts": {
     "lint": "standard",
-    "release:start": "git flow release start $1",
+    "release:start": "start(){ git flow release start $1; };start",
     "release:end": "r(){ git checkout master && git merge --no-ff --no-verify release/$1 && git tag -a $1 && git checkout develop && git merge --no-ff --no-verify release/$1 && git branch -d release/$1; };r"
   },
   "keywords": ["mrm", "mrm-tasks"],

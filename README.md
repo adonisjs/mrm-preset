@@ -14,6 +14,9 @@ AdonisJs preset for [mrm](https://github.com/sapegin/mrm) to keep the project co
   - [Circle CI](#circle-ci)
   - [Contributing.md template](#contributingmd-template)
   - [Editorconfig file](#editorconfig-file)
+  - [Gitflow](#gitflow)
+    - [release:start](#releasestart)
+    - [release:end](#releaseend)
   - [Github templates](#github-templates)
   - [Gitignore template](#gitignore-template)
   - [License template](#license-template)
@@ -146,6 +149,24 @@ Creates a `.editorconfig` file inside the project root. The editor config file i
 You may need a [plugin](https://editorconfig.org/#download) for your editor to make `editorconfig` work.
 
 The file is generated with settings defined inside the [task file](https://github.com/adonisjs/mrm-preset/blob/master/editorconfig/index.js#L20) and again is not customizable.
+### Gitflow
+Adds git flow based release commands to npm scripts. 
+
+#### release:start
+Starts the **git flow** release by running `git flow release start $1` under the hood.
+
+```
+npm run release:start 1.0.0
+```
+
+#### release:end
+Ends the **git flow** release by running multiple commands to create and merge release branches with git tags. Commands executed under the hood will use `--no-verify` flag to ignore git hooks, which can conflict with release commit messages style.
+
+```
+npm run release:end 1.0.0
+```
+
+Before running the above command, do make sure to update the **npm version**, **generate the changelog** and **commit these changes**.
 
 ### Github templates
 
