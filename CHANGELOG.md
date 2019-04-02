@@ -1,3 +1,12 @@
+## [1.0.19](https://github.com/adonisjs/mrm-preset/compare/1.0.18...1.0.19) (2019-04-02)
+
+
+### Features
+
+* **tslint:** allow pascal-case and ignore regex from line length limit ([7c9cc01](https://github.com/adonisjs/mrm-preset/commit/7c9cc01))
+
+
+
 ## [1.0.18](https://github.com/adonisjs/mrm-preset/compare/1.0.17...1.0.18) (2019-04-02)
 
 
