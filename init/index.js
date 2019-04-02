@@ -64,24 +64,20 @@ const minNodeVersion = {
   name: 'minNodeVersion',
   choices: [
     {
-      name: '8.0.0',
+      name: '8.0.0 (Legacy)',
       value: '8.0.0'
     },
     {
-      name: '8.9.0 (LTS carbon)',
+      name: '10.15.3 (LTS carbon)',
       value: '8.9.0'
     },
     {
-      name: '8.12.0 (Latest LTS carbon)',
-      value: '8.12.0'
+      name: '11.0.0',
+      value: '11.0.0'
     },
     {
-      name: '9.0.0',
-      value: '9.0.0'
-    },
-    {
-      name: '10.0.0',
-      value: '10.0.0'
+      name: 'latest',
+      value: 'latest'
     }
   ]
 }
@@ -118,6 +114,10 @@ const services = {
     {
       name: 'Coveralls',
       value: 'coveralls'
+    },
+    {
+      name: 'Circle CI',
+      value: 'circleci'
     }
   ],
   name: 'services'

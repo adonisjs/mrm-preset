@@ -102,6 +102,7 @@ To remove support for `appveyor` from your project, just `npm run mrm appveyor` 
 npm run mrm appveyor
 ```
 
+
 ### Contributing.md template
 Creates `.github/CONTRIBUTING.md` file. This file is shown by Github to users [creating new issues](https://help.github.com/articles/setting-guidelines-for-repository-contributors).
 
