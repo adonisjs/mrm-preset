@@ -32,8 +32,8 @@ function task (config) {
    * Define build for each nodejs version. Later we will use workflows to
    * run each version
    */
-  versions.forEach((version) => {
-    circleCiFile.set(`jobs.build_${version}`, {
+  const jobs = versions.reduce((result, version) => {
+    result[`build_${version}`] = {
       docker: [{
         image: `circleci/node:${version}`
       }],
@@ -58,9 +58,12 @@ function task (config) {
           run: 'npm test'
         }
       ]
-    })
-  })
+    }
 
+    return result
+  }, {})
+
+  circleCiFile.set('jobs', jobs)
   circleCiFile.set('workflows', {
     version: 2,
     workflow: {
