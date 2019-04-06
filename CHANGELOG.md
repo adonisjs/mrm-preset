@@ -1,3 +1,14 @@
+## [1.0.21](https://github.com/adonisjs/mrm-preset/compare/1.0.20...1.0.21) (2019-04-06)
+
+
+### Bug Fixes
+
+* **circleci:** fix yaml parsing errors ([cd9d1e6](https://github.com/adonisjs/mrm-preset/commit/cd9d1e6))
+* **init:** use correct node version on prompt selection ([22097a2](https://github.com/adonisjs/mrm-preset/commit/22097a2))
+* **services:** return badge for circleci service ([98b1902](https://github.com/adonisjs/mrm-preset/commit/98b1902))
+
+
+
 ## [1.0.20](https://github.com/adonisjs/mrm-preset/compare/1.0.19...1.0.20) (2019-04-02)
 
 

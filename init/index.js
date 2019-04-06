@@ -69,7 +69,7 @@ const minNodeVersion = {
     },
     {
       name: '10.15.3 (LTS carbon)',
-      value: '8.9.0'
+      value: '10.15.3'
     },
     {
       name: '11.0.0',
