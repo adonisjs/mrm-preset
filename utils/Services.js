@@ -48,6 +48,11 @@ class Services {
           url: `https://ci.appveyor.com/project/${this.appveyorUsername}/${this.repoName}`,
           image: `https://img.shields.io/appveyor/ci/${this.appveyorUsername}/${this.repoName}/master.svg?style=flat-square&logo=appveyor`
         }
+      case 'circleci':
+        return {
+          url: `https://circleci.com/gh/${this.repo}`,
+          image: `https://img.shields.io/circleci/project/github/${this.repo}/master.svg?style=flat-square&logo=circleci`
+        }
       case 'coveralls':
         return {
           url: `https://coveralls.io/github/${this.repo}`,
