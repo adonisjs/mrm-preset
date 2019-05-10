@@ -1,3 +1,12 @@
+# [1.1.0](https://github.com/adonisjs/mrm-preset/compare/1.0.21...1.1.0) (2019-05-10)
+
+
+### Features
+
+* add support for np release management ([611661d](https://github.com/adonisjs/mrm-preset/commit/611661d))
+
+
+
 ## [1.0.21](https://github.com/adonisjs/mrm-preset/compare/1.0.20...1.0.21) (2019-04-06)
 
 
