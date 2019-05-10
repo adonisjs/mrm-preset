@@ -49,7 +49,7 @@ const gitOrigin = {
  */
 const isCore = {
   type: 'confirm',
-  message: 'Is it a package written by the core team',
+  message: 'Is it a package written by the AdonisJs core team',
   name: 'core'
 }
 
@@ -74,6 +74,10 @@ const minNodeVersion = {
     {
       name: '11.0.0',
       value: '11.0.0'
+    },
+    {
+      name: '12.0.0',
+      value: '12.0.0'
     },
     {
       name: 'latest',

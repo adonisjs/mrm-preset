@@ -6,17 +6,17 @@
     ],
     "all": [
       "appveyor",
+      "circleci",
       "contributing",
       "editorconfig",
       "github",
       "gitignore",
-      "circleci",
       "license",
       "package",
       "readme",
+      "readme-toc",
       "travis",
-      "validateCommit",
-      "readme-toc"
+      "validateCommit"
     ]
   }
 }
