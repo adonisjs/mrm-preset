@@ -8,7 +8,10 @@
     "release:start": "start(){ git flow release start $1; };start",
     "release:end": "r(){ git checkout master && git merge --no-ff --no-verify release/$1 && git tag -a $1 && git checkout develop && git merge --no-ff --no-verify release/$1 && git branch -d release/$1; };r"
   },
-  "keywords": ["mrm", "mrm-tasks"],
+  "keywords": [
+    "mrm",
+    "mrm-tasks"
+  ],
   "author": "virk",
   "license": "MIT",
   "dependencies": {
@@ -16,11 +19,11 @@
     "debug": "^4.1.1",
     "deep-extend": "^0.6.0",
     "git-user-name": "^2.0.0",
-    "inquirer": "^6.2.2",
+    "inquirer": "^6.3.1",
     "mrm-core": "^3.3.0",
     "mrm-task-license": "^1.2.3",
     "parse-github-url": "^1.0.2",
-    "recast": "^0.17.5"
+    "recast": "^0.17.6"
   },
   "devDependencies": {
     "cz-conventional-changelog": "^2.1.0",
