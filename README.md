@@ -20,6 +20,7 @@ AdonisJs preset for [mrm](https://github.com/sapegin/mrm) to keep the project co
   - [Github templates](#github-templates)
   - [Gitignore template](#gitignore-template)
   - [License template](#license-template)
+  - [Np release management](#np-release-management)
   - [Package file generation](#package-file-generation)
     - [Testing](#testing)
     - [Linter](#linter)
@@ -210,6 +211,13 @@ You can choose from one of the [available licenses](https://github.com/sapegin/m
 ```
 
 If not defined, will fallback to `package.json` file or `MIT`.
+
+### Np release management
+
+[np](https://github.com/sindresorhus/np) is a sick (👌) tool to publish your npm packages by ensuring that your package is in healthy state for release.
+
+We recommend reading their README too https://github.com/sindresorhus/np.
+
 ### Package file generation
 
 This tasks does lots of work to install handful of packages and update `package.json` file.
