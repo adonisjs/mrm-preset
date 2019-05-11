@@ -7,7 +7,7 @@
 * file that was distributed with this source code.
 */
 
-const { install, packageJson, file } = require('mrm-core')
+const { install, packageJson, uninstall } = require('mrm-core')
 const mergeConfig = require('../utils/mergeConfig')
 
 function task (config) {
@@ -18,6 +18,11 @@ function task (config) {
    * Install required dev-dependencies
    */
   install(['np'])
+
+  /**
+   * Remove pkg ok, since np will take care of it
+   */
+  uninstall(['pkg-ok'])
 
   const pkgFile = packageJson()
 
