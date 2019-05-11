@@ -16,7 +16,7 @@ function task () {
    * Add git hook to re-generate the TOC
    */
   pkgFile.set(
-    'gitHooks.pre-commit',
+    'husky.hooks.pre-commit',
     `doctoc README.md --title='## Table of contents' && git add README.md`
   )
 
@@ -28,7 +28,7 @@ function task () {
   /**
    * Install required dependencies
    */
-  install(['doctoc'])
+  install(['doctoc', 'husky'])
 }
 
 task.description = 'Generate TOC for readme.md file'

@@ -49,7 +49,7 @@ function task (config) {
    * badges to the badges list
    */
   if (values.ts) {
-    badges += `\n![](https://img.shields.io/badge/Uses-Typescript-294E80.svg?style=flat-square&colorA=ddd)`
+    badges += `\n![](https://img.shields.io/badge/Typescript-294E80.svg?style=for-the-badge&logo=typescript)`
   }
 
   readme.apply(Object.assign({

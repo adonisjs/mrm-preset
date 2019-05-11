@@ -15,7 +15,7 @@ function task (config) {
   /**
    * Install required dependencies
    */
-  install(['typedoc', 'typedoc-plugin-external-module-name', 'typedoc-plugin-single-line-tags'])
+  install(['typedoc', 'typedoc-plugin-external-module-name'])
 
   /**
    * Append script and save file
