@@ -25,7 +25,7 @@ function task (config) {
    * Set npm config
    */
   pkgFile.set('np', {
-    contents: values.ts ? 'build' : '.',
+    contents: '.',
     anyBranch: false,
   })
 
