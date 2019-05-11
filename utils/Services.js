@@ -41,27 +41,27 @@ class Services {
       case 'travis':
         return {
           url: `https://travis-ci.org/${this.repo}`,
-          image: `https://img.shields.io/travis/${this.repo}/master.svg?style=flat-square&logo=travis`
+          image: `https://img.shields.io/travis/${this.repo}/master.svg?style=for-the-badge&logo=travis`
         }
       case 'appveyor':
         return {
           url: `https://ci.appveyor.com/project/${this.appveyorUsername}/${this.repoName}`,
-          image: `https://img.shields.io/appveyor/ci/${this.appveyorUsername}/${this.repoName}/master.svg?style=flat-square&logo=appveyor`
+          image: `https://img.shields.io/appveyor/ci/${this.appveyorUsername}/${this.repoName}/master.svg?style=for-the-badge&logo=appveyor`
         }
       case 'circleci':
         return {
           url: `https://circleci.com/gh/${this.repo}`,
-          image: `https://img.shields.io/circleci/project/github/${this.repo}/master.svg?style=flat-square&logo=circleci`
+          image: `https://img.shields.io/circleci/project/github/${this.repo}/master.svg?style=for-the-badge&logo=circleci`
         }
       case 'coveralls':
         return {
           url: `https://coveralls.io/github/${this.repo}`,
-          image: `https://img.shields.io/coveralls/${this.repo}/master.svg?style=flat-square`
+          image: `https://img.shields.io/coveralls/${this.repo}/master.svg?style=for-the-badge`
         }
       case 'npm':
         return {
           url: `https://npmjs.org/package/${this.packageName}`,
-          image: `https://img.shields.io/npm/v/${this.packageName}.svg?style=flat-square&logo=npm`
+          image: `https://img.shields.io/npm/v/${this.packageName}.svg?style=for-the-badge&logo=npm`
         }
       default:
         throw new MrmError(`${service} is not supported. Please remove it from config.json file`)
