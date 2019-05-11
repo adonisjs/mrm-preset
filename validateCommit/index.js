@@ -25,7 +25,7 @@ function task () {
    * Add git hook to validate commit message
    */
   pkgFile.set(
-    'gitHooks.commit-msg',
+    'husky.hooks.commit-msg',
     'node ./node_modules/@adonisjs/mrm-preset/validateCommit/conventional/validate.js'
   )
 
@@ -37,7 +37,7 @@ function task () {
   /**
    * Install required dependencies
    */
-  install(['cz-conventional-changelog', 'commitizen', 'yorkie'])
+  install(['cz-conventional-changelog', 'commitizen', 'husky'])
 
   /**
    * Copy commit convention template
