@@ -21,7 +21,7 @@ function task (config) {
    * Append script and save file
    */
   const pkgFile = packageJson()
-  pkgFile.appendScript('build', 'typedoc').save()
+  pkgFile.appendScript('build', 'typedoc --excludePrivate && git add docs').save()
 
   const typedocFile = file('typedoc.js')
 
