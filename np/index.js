@@ -7,7 +7,7 @@
 * file that was distributed with this source code.
 */
 
-const { install, packageJson, uninstall } = require('mrm-core')
+const { install, packageJson, uninstall, ini } = require('mrm-core')
 const mergeConfig = require('../utils/mergeConfig')
 
 function task (config) {
@@ -38,11 +38,24 @@ function task (config) {
    * Set release script
    */
   pkgFile.setScript('release', 'np')
+  pkgFile.setScript('version', 'npm run build')
+
+  /**
+   * Get rid of `prepublishOnly` in favor of `version`
+   */
+  pkgFile.removeScript('prepublishOnly')
 
   /**
    * Save the package file
    */
   pkgFile.save()
+
+  /**
+   * Create npmrc file to define commit format
+   */
+  const npmrc = ini('.npmrc')
+  npmrc.set('message', 'chore(release): %s')
+  npmrc.save({ withSpaces: false })
 }
 
 task.description = 'Adds np to do release management'

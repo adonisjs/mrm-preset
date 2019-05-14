@@ -57,6 +57,11 @@ class JsPreset {
    */
   up (pkgFile) {
     pkgFile.setScript('lint', 'standard')
+    pkgFile.set('main', 'index.js')
+    pkgFile.set('files', [
+      'index.js',
+      'src',
+    ])
   }
 
   /**
@@ -71,6 +76,8 @@ class JsPreset {
    */
   down (pkgFile) {
     pkgFile.removeScript('lint')
+    pkgFile.unset('main')
+    pkgFile.unset('files')
   }
 }
 

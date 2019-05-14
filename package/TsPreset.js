@@ -67,6 +67,16 @@ class TsPreset {
     pkgFile.setScript('prepublishOnly', 'npm run build')
     pkgFile.set('nyc.extension', ['.ts'])
 
+    /**
+     * Set files to publish along with the main file
+     */
+    pkgFile.set('main', 'build/index.js')
+    pkgFile.set('files', [
+      'build/src',
+      'build/index.d.ts',
+      'build/index.js',
+    ])
+
     debug('creating files %o', ['tsconfig.json', 'tslint.json'])
 
     json('tsconfig.json').merge({ extends: './node_modules/@adonisjs/mrm-preset/_tsconfig' }).save()
@@ -92,6 +102,8 @@ class TsPreset {
     pkgFile.removeScript('build')
     pkgFile.removeScript('prepublishOnly')
     pkgFile.unset('nyc.extension', ['.ts'])
+    pkgFile.unset('main')
+    pkgFile.unset('files')
   }
 }
 

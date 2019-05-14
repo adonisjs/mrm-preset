@@ -1,3 +1,13 @@
+## [2.0.2](https://github.com/adonisjs/mrm-preset/compare/v2.0.1...v2.0.2) (2019-05-14)
+
+
+### Features
+
+* **np:** add npmrc file with commit message standard ([efd77d6](https://github.com/adonisjs/mrm-preset/commit/efd77d6))
+* **package:** define main and files array ([55b4cab](https://github.com/adonisjs/mrm-preset/commit/55b4cab))
+
+
+
 ## [2.0.1](https://github.com/adonisjs/mrm-preset/compare/v2.0.0...v2.0.1) (2019-05-14)
 
 
