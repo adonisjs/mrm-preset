@@ -38,6 +38,12 @@ function task (config) {
    * Set release script
    */
   pkgFile.setScript('release', 'np')
+  pkgFile.setScript('version', 'npm run build')
+
+  /**
+   * Get rid of `prepublishOnly` in favor of `version`
+   */
+  pkgFile.removeScript('prepublishOnly')
 
   /**
    * Save the package file
