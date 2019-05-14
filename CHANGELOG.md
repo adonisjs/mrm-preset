@@ -1,3 +1,12 @@
+## [2.0.1](https://github.com/adonisjs/mrm-preset/compare/v2.0.0...v2.0.1) (2019-05-14)
+
+
+### Bug Fixes
+
+* **commit-hook:** use HUSKY_GIT_PARAMS over GIT_PARAMS ([ea65852](https://github.com/adonisjs/mrm-preset/commit/ea65852))
+
+
+
 # [1.1.0](https://github.com/adonisjs/mrm-preset/compare/1.0.21...1.1.0) (2019-05-10)
 
 
