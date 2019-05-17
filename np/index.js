@@ -54,7 +54,7 @@ function task (config) {
    * Create npmrc file to define commit format
    */
   const npmrc = ini('.npmrc')
-  npmrc.set('message', 'chore(release): %s')
+  npmrc.set('_global', { message: '"chore(release): %s"' })
   npmrc.save({ withSpaces: false })
 }
 
