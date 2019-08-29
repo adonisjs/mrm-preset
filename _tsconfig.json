@@ -10,7 +10,8 @@
     "moduleResolution": "node",
     "outDir": "../../../build",
     "strictNullChecks": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true
   },
   "include": [
     "../../../**/*"
