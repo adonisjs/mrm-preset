@@ -4,7 +4,7 @@ Circle CI  tasks creates a configuration file `(.circleci/config.yml)` in the ro
 ```json
 {
   "services": ["circleci"],
-  "minNodeVersion": "10.0.0"
+  "minNodeVersion": "12.0.0"
 }
 ```
 
