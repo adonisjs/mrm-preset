@@ -16,7 +16,7 @@ const JsPreset = require('./JsPreset')
 const TsPreset = require('./TsPreset')
 const CoverallsPreset = require('./CoverallsPreset')
 
-const baseDependencies = ['japa', 'pkg-ok']
+const baseDependencies = ['japa']
 
 function task (config) {
   mergeConfig(config)
@@ -62,7 +62,6 @@ function task (config) {
   pkgFile.setScript('mrm', 'mrm --preset=@adonisjs/mrm-preset')
   pkgFile.setScript('test', hasCoveralls ? 'nyc node japaFile.js' : 'node japaFile.js')
   pkgFile.setScript('pretest', 'npm run lint')
-  pkgFile.appendScript('prepublishOnly', 'pkg-ok')
   pkgFile.set('nyc.exclude', ['test'])
   pkgFile.set('license', values.license)
 

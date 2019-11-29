@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
-    "target": "es2017",
+    "target": "es2018",
     "module": "commonjs",
-    "lib": ["es2017"],
+    "lib": ["es2018"],
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "removeComments": true,
     "declaration": true,
     "moduleResolution": "node",
+    "rootDir": "../../../",
     "outDir": "../../../build",
     "strictNullChecks": true,
     "allowSyntheticDefaultImports": true,

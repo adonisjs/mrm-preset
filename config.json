@@ -16,7 +16,8 @@
       "readme",
       "readme-toc",
       "travis",
-      "validateCommit"
+      "validateCommit",
+      "np"
     ]
   }
 }

@@ -1,14 +1,12 @@
 {
   "name": "@adonisjs/mrm-preset",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "MRM preset used by adonisjs for all core packages",
   "main": "config.json",
   "scripts": {
     "lint": "standard",
     "release:start": "start(){ git flow release start $1; };start",
-    "release:end": "r(){ git checkout master && git merge --no-ff --no-verify release/$1 && git tag -a $1 && git checkout develop && git merge --no-ff --no-verify release/$1 && git branch -d release/$1; };r",
-    "snyk-protect": "snyk protect",
-    "prepublish": "npm run snyk-protect"
+    "release:end": "r(){ git checkout master && git merge --no-ff --no-verify release/$1 && git tag -a $1 && git checkout develop && git merge --no-ff --no-verify release/$1 && git branch -d release/$1; };r"
   },
   "keywords": [
     "mrm",
@@ -17,23 +15,23 @@
   "author": "virk",
   "license": "MIT",
   "dependencies": {
-    "chalk": "^2.4.2",
+    "chalk": "^3.0.0",
     "debug": "^4.1.1",
     "deep-extend": "^0.6.0",
     "git-user-name": "^2.0.0",
     "inquirer": "^7.0.0",
-    "mrm-core": "^3.3.3",
-    "mrm-task-license": "^1.2.3",
+    "mrm-core": "^4.0.0",
+    "mrm-task-license": "^2.0.0",
     "parse-github-url": "^1.0.2",
-    "recast": "^0.18.2"
+    "recast": "^0.18.5"
   },
   "devDependencies": {
     "cz-conventional-changelog": "^3.0.2",
     "doctoc": "^1.4.0",
     "fs-extra": "^8.1.0",
     "klaw": "^3.0.0",
-    "mrm": "^1.2.2",
-    "standard": "^14.1.0",
+    "mrm": "^2.0.0",
+    "standard": "^14.3.1",
     "yorkie": "^2.0.0"
   },
   "config": {

@@ -64,11 +64,11 @@ const minNodeVersion = {
   name: 'minNodeVersion',
   choices: [
     {
-      name: '8.0.0 (Legacy)',
+      name: '8.0.0 (Maintenance)',
       value: '8.0.0'
     },
     {
-      name: '10.15.3 (LTS carbon)',
+      name: '10.15.3 (Active till April 2020)',
       value: '10.15.3'
     },
     {
@@ -78,6 +78,14 @@ const minNodeVersion = {
     {
       name: '12.0.0',
       value: '12.0.0'
+    },
+    {
+      name: '12.13.1 (LTS)',
+      value: '12.13.1'
+    },
+    {
+      name: '13.0.0',
+      value: '13.0.0'
     },
     {
       name: 'latest',

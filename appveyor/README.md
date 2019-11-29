@@ -4,7 +4,7 @@ Appveyor tasks creates a configuration file `(appveyor.yml)` in the root of your
 ```json
 {
   "services": ["appveyor"],
-  "minNodeVersion": "10.0"
+  "minNodeVersion": "12.0.0"
 }
 ```
 

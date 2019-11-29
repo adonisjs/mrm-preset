@@ -30,9 +30,7 @@ function task () {
     '*.log',
     'build',
     'dist',
-    'yarn.lock',
-    'shrinkwrap.yaml',
-    'package-lock.json'
+    'shrinkwrap.yaml'
   ]
 
   debug('.gitignore %o', linesToWrite)
