@@ -17,7 +17,7 @@ exports.rules = {
   'one-variable-per-declaration': [true, 'ignore-for-loop'],
   'no-conditional-assignment': true,
   'trailing-comma': [true, { 'multiline': 'always', 'singleline': 'never' }],
-  'semicolon': [true, 'never'],
+  'semicolon': [true, 'never', 'ignore-interfaces'],
   'only-arrow-functions': [true, 'allow-named-functions'],
   'space-before-function-paren': true,
   'triple-equals': true,
