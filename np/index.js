@@ -19,11 +19,6 @@ function task (config) {
    */
   install(['np'])
 
-  /**
-   * Remove pkg ok, since np will take care of it
-   */
-  uninstall(['pkg-ok'])
-
   const pkgFile = packageJson()
 
   /**
@@ -39,11 +34,6 @@ function task (config) {
    */
   pkgFile.setScript('release', 'np')
   pkgFile.setScript('version', 'npm run build')
-
-  /**
-   * Get rid of `prepublishOnly` in favor of `version`
-   */
-  pkgFile.removeScript('prepublishOnly')
 
   /**
    * Save the package file
