@@ -63,6 +63,16 @@ class Services {
           url: `https://npmjs.org/package/${this.packageName}`,
           image: `https://img.shields.io/npm/v/${this.packageName}.svg?style=for-the-badge&logo=npm`
         }
+      case 'license':
+        return {
+          url: 'LICENSE.md',
+          image: `https://img.shields.io/npm/l/${this.packageName}?color=blueviolet&style=for-the-badge`
+        }
+      case 'typescript':
+        return {
+          url: '',
+          image: 'https://img.shields.io/badge/Typescript-294E80.svg?style=for-the-badge&logo=typescript'
+        }
       default:
         throw new MrmError(`${service} is not supported. Please remove it from config.json file`)
     }
@@ -77,14 +87,14 @@ class Services {
    * @return {String}
    */
   getUrls () {
-    return this.list.concat(['npm']).map((item) => {
+    return this.list.map((item) => {
       const { url, image } = this.getServiceData(item)
       return `[${item}-image]: ${image}\n[${item}-url]: ${url} "${item}"`
     }).join('\n\n')
   }
 
   /**
-   * Returns a multiline markdown formatted reference url
+   * Returns a markdown formatted reference url
    * to the badges URL's obtained using `this.getUrls()`
    *
    * @method getReferences
@@ -92,9 +102,9 @@ class Services {
    * @return {String}
    */
   getReferences () {
-    return this.list.concat(['npm']).map((item) => {
+    return this.list.map((item) => {
       return `[![${item}-image]][${item}-url]`
-    }).join('\n')
+    }).join(' ')
   }
 }
 

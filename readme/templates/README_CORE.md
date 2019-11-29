@@ -1,22 +1,18 @@
+${banner}
 # ${packageName}
+> Tagline
 
 ${servicesBadges}
 
-## Change log
+A short brief
 
-The change log can be found in the [CHANGELOG.md](CHANGELOG.md) file.
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-## Contributing
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-Everyone is welcome to contribute. Please go through the following guides, before getting started.
+## Purpose
 
-1. [Contributing](https://adonisjs.com/contributing)
-2. [Code of conduct](https://adonisjs.com/code-of-conduct)
-
-
-## Authors & License
-[${ghUsername}](https://github.com/${ghUsername}) and [contributors](https://github.com/${owner}/${repoName}/graphs/contributors).
-
-${license} License, see the included [${license}](LICENSE.md) file.
+## Features
 
 ${servicesUrls}
