@@ -1,3 +1,12 @@
+# [2.2.0](https://github.com/adonisjs/mrm-preset/compare/v2.1.0...v2.2.0) (2019-11-29)
+
+
+### Features
+
+* add support eslint ([61332d1](https://github.com/adonisjs/mrm-preset/commit/61332d1))
+
+
+
 # [2.1.0](https://github.com/adonisjs/mrm-preset/compare/v2.0.3...v2.1.0) (2019-08-29)
 
 
