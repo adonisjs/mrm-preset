@@ -14,6 +14,7 @@ AdonisJs preset for [mrm](https://github.com/sapegin/mrm) to keep the project co
   - [Circle CI](#circle-ci)
   - [Contributing.md template](#contributingmd-template)
   - [Editorconfig file](#editorconfig-file)
+  - [Eslint](#eslint)
   - [Gitflow](#gitflow)
     - [release:start](#releasestart)
     - [release:end](#releaseend)
@@ -150,6 +151,10 @@ Creates a `.editorconfig` file inside the project root. The editor config file i
 You may need a [plugin](https://editorconfig.org/#download) for your editor to make `editorconfig` work.
 
 The file is generated with settings defined inside the [task file](https://github.com/adonisjs/mrm-preset/blob/master/editorconfig/index.js#L20) and again is not customizable.
+### Eslint
+
+Installs `eslint` and `eslint-plugin-adonis`. Also it will remove tslint and it's related dependencies from the project.
+
 ### Gitflow
 Adds git flow based release commands to npm scripts. 
 
