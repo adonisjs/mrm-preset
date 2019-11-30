@@ -7,19 +7,42 @@
 * file that was distributed with this source code.
 */
 
-const { json, uninstall, install } = require('mrm-core')
+const { json, uninstall, install, packageJson, lines } = require('mrm-core')
 
 function task (config) {
+  /**
+   * Add eslintrc file
+   */
   const eslintRc = json('.eslintrc.json')
-  eslintRc.set({
-    extends: ['plugin:adonis/typescriptPackage']
-  })
+  eslintRc.set({ extends: ['plugin:adonis/typescriptPackage'] })
   eslintRc.save()
-  install(['eslint'])
+
+  /**
+   * Update package file
+   */
+  const pkgFile = packageJson()
+  pkgFile.setScript('lint', 'eslint .')
+  pkgFile.save()
+
+  /**
+   * Add .eslintignore file
+   */
+  const eslintIgnore = lines('.eslintignore')
+  eslintIgnore.add('build')
+  eslintIgnore.save()
+
+  /**
+   * Install required dependencies
+   */
+  install(['eslint', 'eslint-plugin-adonis'])
 
   // Remove tslint
   const tsLint = json('tslint.json')
   tsLint.delete()
+
+  /**
+   * Remove tslint related dependencies
+   */
   uninstall(['tslint-eslint-rules', 'tslint'])
 }
 
