@@ -60,14 +60,14 @@ function task (config) {
   /**
    * AdonisJS banner
    */
-  if (packageName.startsWith('@adonisjs')) {
+  if (values.packageName.startsWith('@adonisjs')) {
     banner = `<div align="center"><img src="https://res.cloudinary.com/adonisjs/image/upload/q_100/v1564392111/adonis-banner_o9lunk.png" width="600px"></div>`
   }
 
   /**
    * Poppinss banner
    */
-  if (packageName.startsWith('@poppinss')) {
+  if (values.packageName.startsWith('@poppinss')) {
     banner = `<div align="center"><img src="https://res.cloudinary.com/adonisjs/image/upload/q_100/v1557762307/poppinss_iftxlt.jpg" width="600px"></div>`
   }
 
