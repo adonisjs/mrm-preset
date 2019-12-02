@@ -1,3 +1,12 @@
+## [2.2.2](https://github.com/adonisjs/mrm-preset/compare/2.2.1...2.2.2) (2019-12-02)
+
+
+### Bug Fixes
+
+* **readme-task:** access packageName from values object ([a172d00](https://github.com/adonisjs/mrm-preset/commit/a172d00))
+
+
+
 # [2.2.0](https://github.com/adonisjs/mrm-preset/compare/v2.1.0...v2.2.0) (2019-11-29)
 
 
