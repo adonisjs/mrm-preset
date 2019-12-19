@@ -5,7 +5,7 @@
     "lib": ["es2018"],
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "removeComments": true,
+    "removeComments": false,
     "declaration": true,
     "moduleResolution": "node",
     "rootDir": "../../../",
