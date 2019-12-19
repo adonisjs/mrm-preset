@@ -21,7 +21,7 @@ function task (config) {
    * Update package file
    */
   const pkgFile = packageJson()
-  pkgFile.setScript('lint', 'eslint .')
+  pkgFile.setScript('lint', 'eslint . --ext=.ts')
   pkgFile.save()
 
   /**
