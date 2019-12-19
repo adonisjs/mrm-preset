@@ -1,3 +1,12 @@
+## [2.2.3](https://github.com/adonisjs/mrm-preset/compare/2.2.2...2.2.3) (2019-12-19)
+
+
+### Bug Fixes
+
+* **eslint:** set file extensions for the lint task ([d4af279](https://github.com/adonisjs/mrm-preset/commit/d4af279))
+
+
+
 ## [2.2.2](https://github.com/adonisjs/mrm-preset/compare/2.2.1...2.2.2) (2019-12-02)
 
 
