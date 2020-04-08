@@ -1,3 +1,7 @@
+# [2.3.0](https://github.com/adonisjs/mrm-preset/compare/2.2.4...2.3.0) (2020-04-08)
+
+
+
 ## [2.2.4](https://github.com/adonisjs/mrm-preset/compare/2.2.3...2.2.4) (2020-02-06)
 
 
