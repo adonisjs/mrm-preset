@@ -16,8 +16,6 @@ class TsPreset {
       'ts-node',
       'typescript',
       '@types/node',
-      'tslint',
-      'tslint-eslint-rules',
       'del-cli'
     ]
   }
@@ -60,7 +58,6 @@ class TsPreset {
    * @return {void}
    */
   up (pkgFile) {
-    pkgFile.setScript('lint', 'tslint --project tsconfig.json')
     pkgFile.setScript('clean', 'del build')
     pkgFile.setScript('compile', 'npm run lint && npm run clean && tsc')
     pkgFile.setScript('build', 'npm run compile')
@@ -77,10 +74,9 @@ class TsPreset {
       'build/index.js',
     ])
 
-    debug('creating files %o', ['tsconfig.json', 'tslint.json'])
+    debug('creating files %o', ['tsconfig.json'])
 
     json('tsconfig.json').merge({ extends: './node_modules/@adonisjs/mrm-preset/_tsconfig' }).save()
-    json('tslint.json').merge({ extends: ['@adonisjs/mrm-preset/_tslint'], rules: {} }).save()
   }
 
   /**
@@ -93,8 +89,8 @@ class TsPreset {
    * @return {void}
    */
   down (pkgFile) {
-    debug('removing files/dirs %o', ['tsconfig.json', 'tslint.json', 'build'])
-    deleteFiles(['tsconfig.json', 'tslint.json', 'build'])
+    debug('removing files/dirs %o', ['tsconfig.json', 'build'])
+    deleteFiles(['tsconfig.json', 'build'])
 
     pkgFile.removeScript('lint')
     pkgFile.removeScript('clean')

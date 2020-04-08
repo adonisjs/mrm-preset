@@ -13,6 +13,7 @@
       "gitignore",
       "license",
       "package",
+      "eslint",
       "readme",
       "readme-toc",
       "travis",
