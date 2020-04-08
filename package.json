@@ -15,23 +15,23 @@
   "author": "virk",
   "license": "MIT",
   "dependencies": {
-    "chalk": "^3.0.0",
+    "chalk": "^4.0.0",
     "debug": "^4.1.1",
     "deep-extend": "^0.6.0",
     "git-user-name": "^2.0.0",
-    "inquirer": "^7.0.4",
-    "mrm-core": "^4.0.2",
-    "mrm-task-license": "^3.0.1",
+    "inquirer": "^7.1.0",
+    "mrm-core": "^4.1.0",
+    "mrm-task-license": "^3.0.3",
     "parse-github-url": "^1.0.2",
-    "recast": "^0.18.5"
+    "recast": "^0.19.0"
   },
   "devDependencies": {
     "cz-conventional-changelog": "^3.1.0",
     "doctoc": "^1.4.0",
-    "fs-extra": "^8.1.0",
+    "fs-extra": "^9.0.0",
     "klaw": "^3.0.0",
-    "mrm": "^2.0.4",
-    "standard": "^14.3.1",
+    "mrm": "^2.2.0",
+    "standard": "^14.3.3",
     "yorkie": "^2.0.0"
   },
   "config": {
