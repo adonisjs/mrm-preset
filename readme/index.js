@@ -17,27 +17,23 @@ const saveFile = require('../utils/saveFile')
 const mergeConfig = require('../utils/mergeConfig')
 
 function task (config) {
-  mergeConfig(config)
   const ghAttributes = gh('creating README.md file')
 
-  const values = config
-    .defaults({
-      packageName: packageJson().get('name'),
-      repoName: ghAttributes.name,
-      owner: ghAttributes.owner,
-      ghUsername: gitUserName(),
-      force: false,
-      appveyorUsername: ghAttributes.owner
-    })
-    .require('ghUsername', 'packageName', 'license')
-    .values()
+  mergeConfig(config, {
+    packageName: packageJson().get('name') || 'Anonymous',
+    repoName: ghAttributes.name,
+    owner: ghAttributes.owner,
+    ghUsername: gitUserName(),
+    force: false,
+    appveyorUsername: ghAttributes.owner,
+  })
 
-  const servicesList = values.services || []
+  const servicesList = config.services || []
 
   /**
    * Adding typescript when `ts` is true
    */
-  if (values.ts) {
+  if (config.ts) {
     servicesList.push('typescript')
   }
 
@@ -47,27 +43,27 @@ function task (config) {
   servicesList.push('npm', 'license')
 
   const services = new Services(servicesList, {
-    owner: values.owner,
-    appveyorUsername: values.appveyorUsername,
-    repoName: values.repoName,
-    packageName: values.packageName
+    owner: config.owner,
+    appveyorUsername: config.appveyorUsername,
+    repoName: config.repoName,
+    packageName: config.packageName
   })
 
-  const templateFile = values.core ? 'README_CORE.md' : 'README.md'
+  const templateFile = config.core ? 'README_CORE.md' : 'README.md'
   const readme = template('README.md', path.join(__dirname, 'templates', templateFile))
   let banner = ''
 
   /**
    * AdonisJS banner
    */
-  if (values.packageName.startsWith('@adonisjs')) {
+  if (config.packageName.startsWith('@adonisjs')) {
     banner = `<div align="center"><img src="https://res.cloudinary.com/adonisjs/image/upload/q_100/v1564392111/adonis-banner_o9lunk.png" width="600px"></div>`
   }
 
   /**
    * Poppinss banner
    */
-  if (values.packageName.startsWith('@poppinss')) {
+  if (config.packageName.startsWith('@poppinss')) {
     banner = `<div align="center"><img src="https://res.cloudinary.com/adonisjs/image/upload/q_100/v1557762307/poppinss_iftxlt.jpg" width="600px"></div>`
   }
 
@@ -77,12 +73,12 @@ function task (config) {
     servicesUrls: services.getUrls(),
     servicesBadges: badges,
     banner: banner
-  }, values))
+  }, config))
 
   /**
    * Create readme file
    */
-  saveFile(readme, values.force)
+  saveFile(readme, config.force)
 }
 
 task.description = 'Add README.md file'

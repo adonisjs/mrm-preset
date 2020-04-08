@@ -11,22 +11,20 @@ const { yaml, deleteFiles } = require('mrm-core')
 const mergeConfig = require('../utils/mergeConfig')
 
 function task (config) {
-  mergeConfig(config)
-
-  const values = config.defaults({
+  mergeConfig(config, {
     services: ['circleci'],
     minNodeVersion: 'latest',
     core: false
-  }).values()
+  })
 
-  const hasCircleCi = values.services.indexOf('circleci') > -1
+  const hasCircleCi = config.services.indexOf('circleci') > -1
   if (!hasCircleCi) {
     deleteFiles(['.circleci/config.yml'])
     return
   }
 
   const circleCiFile = yaml('.circleci/config.yml').set('version', 2)
-  const versions = values.minNodeVersion === 'latest' ? ['latest'] : [values.minNodeVersion, 'latest']
+  const versions = config.minNodeVersion === 'latest' ? ['latest'] : [config.minNodeVersion, 'latest']
 
   /**
    * Define build for each nodejs version. Later we will use workflows to

@@ -11,14 +11,12 @@ const { yaml, deleteFiles } = require('mrm-core')
 const mergeConfig = require('../utils/mergeConfig')
 
 function task (config) {
-  mergeConfig(config)
-
-  const values = config.defaults({
+  mergeConfig(config, {
     services: [],
     minNodeVersion: '12.0.0'
-  }).values()
+  })
 
-  const appveyor = values.services.indexOf('appveyor') > -1
+  const appveyor = config.services.indexOf('appveyor') > -1
 
   /**
    * Remove `appveyor.yml` file when `appveyor` is missing inside
@@ -30,7 +28,7 @@ function task (config) {
   }
 
   const appveyorFile = yaml('appveyor.yml')
-    .set('environment.matrix', [{ 'nodejs_version': 'Stable' }, { 'nodejs_version': values.minNodeVersion }])
+    .set('environment.matrix', [{ 'nodejs_version': 'Stable' }, { 'nodejs_version': config.minNodeVersion }])
     .set('init', 'git config --global core.autocrlf true')
     .set('install', [{ ps: 'Install-Product node $env:nodejs_version' }, 'npm install'])
     .set('test_script', ['node --version', 'npm --version', 'npm run test'])

@@ -9,7 +9,7 @@
 
 const { json, uninstall, install, packageJson, lines } = require('mrm-core')
 
-function task (config) {
+function task () {
   /**
    * Add eslintrc file
    */

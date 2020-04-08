@@ -7,13 +7,9 @@
 * file that was distributed with this source code.
 */
 
-const { install, packageJson, uninstall, ini } = require('mrm-core')
-const mergeConfig = require('../utils/mergeConfig')
+const { install, packageJson, ini } = require('mrm-core')
 
-function task (config) {
-  mergeConfig(config)
-  const values = config.defaults({ services: [] }).values()
-
+function task () {
   /**
    * Install required dev-dependencies
    */

@@ -19,7 +19,7 @@ const CoverallsPreset = require('./CoverallsPreset')
 const baseDependencies = ['japa']
 
 function task (config) {
-  mergeConfig(config)
+  mergeConfig(config, { services: [], license: 'UNLICENSED' })
 
   /**
    * Create package.json file, if missing
@@ -29,14 +29,13 @@ function task (config) {
     execSync('npm init --yes')
   }
 
-  const values = config.defaults({ services: [] }).values()
-  const hasCoveralls = values.services.indexOf('coveralls') > -1
+  const hasCoveralls = config.services.indexOf('coveralls') > -1
 
   /**
    * Installing required dependencies and removing
    * unwanted dependencies
    */
-  if (values.ts) {
+  if (config.ts) {
     JsPreset.uninstall()
     TsPreset.install(baseDependencies)
   } else {
@@ -63,13 +62,13 @@ function task (config) {
   pkgFile.setScript('test', hasCoveralls ? 'nyc node japaFile.js' : 'node japaFile.js')
   pkgFile.setScript('pretest', 'npm run lint')
   pkgFile.set('nyc.exclude', ['test'])
-  pkgFile.set('license', values.license)
+  pkgFile.set('license', config.license)
 
   /**
    * Adding Typescript or Javascript related
    * scripts
    */
-  if (values.ts) {
+  if (config.ts) {
     JsPreset.down(pkgFile, hasCoveralls)
     TsPreset.up(pkgFile, hasCoveralls)
   } else {
@@ -95,7 +94,7 @@ function task (config) {
    * Create japaFile.js
    */
   const japaFile = file('japaFile.js')
-  japaFile.save(buildJapaFile(japaFile.get(), values.ts))
+  japaFile.save(buildJapaFile(japaFile.get(), config.ts))
 }
 
 task.description = 'Adds package.json file'

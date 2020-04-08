@@ -27,12 +27,10 @@ const prTemplate = '.github/PULL_REQUEST_TEMPLATE.md'
  * @return {void}
  */
 function task (config) {
-  mergeConfig(config)
-
   const ghAttributes = gh('creating github templates')
-  const values = config.defaults({ repo: ghAttributes.repo }).values()
+  mergeConfig(config, { repo: ghAttributes.repo })
 
-  if (values.core) {
+  if (config.core) {
     core.up()
     standard.down()
   } else {

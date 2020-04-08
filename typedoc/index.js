@@ -11,7 +11,7 @@ const { install, packageJson, file } = require('mrm-core')
 const recast = require('recast')
 const typeDocContent = `module.exports = require('@adonisjs/mrm-preset/_typedoc.js')()`
 
-function task (config) {
+function task () {
   /**
    * Install required dependencies
    */

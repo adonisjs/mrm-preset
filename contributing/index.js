@@ -26,17 +26,15 @@ const saveFile = require('../utils/saveFile')
  * @return {void}
  */
 function task (config) {
-  mergeConfig(config)
-
-  const values = config.defaults({ force: false }).values()
+  mergeConfig(config, { force: false })
 
   /**
    * Choosing which template to use
    */
   let templateFile = 'CONTRIBUTING.md'
-  if (values.core) {
+  if (config.core) {
     templateFile = 'CONTRIBUTING_CORE.md'
-  } else if (values.ts) {
+  } else if (config.ts) {
     templateFile = 'CONTRIBUTING_TS.md'
   }
 
@@ -45,7 +43,7 @@ function task (config) {
   const file = template('CONTRIBUTING.md', join(__dirname, 'templates', templateFile))
   file.apply()
 
-  saveFile(file, values.force)
+  saveFile(file, config.force)
 }
 
 task.description = 'Adds CONTRIBUTING.md file'
