@@ -6,7 +6,9 @@
   "scripts": {
     "lint": "standard",
     "release:start": "start(){ git flow release start $1; };start",
-    "release:end": "r(){ git checkout master && git merge --no-ff --no-verify release/$1 && git tag -a $1 && git checkout develop && git merge --no-ff --no-verify release/$1 && git branch -d release/$1; };r"
+    "release:end": "r(){ git checkout master && git merge --no-ff --no-verify release/$1 && git tag -a $1 && git checkout develop && git merge --no-ff --no-verify release/$1 && git branch -d release/$1; };r",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "keywords": [
     "mrm",
@@ -24,7 +26,8 @@
     "mrm-core": "^4.1.0",
     "mrm-task-license": "^3.0.3",
     "parse-github-url": "^1.0.2",
-    "recast": "^0.19.0"
+    "recast": "^0.19.0",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "cz-conventional-changelog": "^3.1.0",
