@@ -1,3 +1,12 @@
+## [2.3.1](https://github.com/adonisjs/mrm-preset/compare/v2.3.0...v2.3.1) (2020-06-24)
+
+
+### Features
+
+* add prettier ([384bd97](https://github.com/adonisjs/mrm-preset/commit/384bd97e43b8d9e0b126a2364fe5f493cdde3996))
+
+
+
 # [2.3.0](https://github.com/adonisjs/mrm-preset/compare/2.2.4...2.3.0) (2020-04-08)
 
 
