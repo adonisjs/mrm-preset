@@ -28,6 +28,7 @@ AdonisJs preset for [mrm](https://github.com/sapegin/mrm) to keep the project co
     - [Coverage reporting](#coverage-reporting)
     - [Typescript setup](#typescript-setup)
     - [Pkg ok](#pkg-ok)
+  - [Prettier](#prettier)
   - [Readme file](#readme-file)
   - [Readme file TOC](#readme-file-toc)
   - [Travis](#travis)
@@ -266,6 +267,10 @@ Also `tsconfig.json` and `tslint.json` files will be created. You are free to mo
 
 [pkg-ok](https://npm.im/pkg-ok) is installed to ensure that files that get published to npm does exists. Make sure to read their README file for more info.
 
+
+### Prettier
+
+Installs `prettier` and `eslint-plugin-prettier` and `eslint-config-prettier` to setup prettier along side with `eslint`. Also the task will check, if `.eslintrc.json` file exists and then only performs the eslint specific setup
 
 ### Readme file
 
