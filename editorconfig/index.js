@@ -19,7 +19,7 @@ const debug = require('debug')('adonis:mrm-editorconfig')
  */
 const defaults = {
   '*': {
-    indent_style: 'space',
+    indent_style: 'tab',
     indent_size: 2,
     end_of_line: 'lf',
     charset: 'utf-8',
