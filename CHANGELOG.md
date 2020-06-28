@@ -1,3 +1,12 @@
+## [2.3.4](https://github.com/adonisjs/mrm-preset/compare/2.3.3...2.3.4) (2020-06-28)
+
+
+### Bug Fixes
+
+* use tabs in editorconfig to be consistent with prettier settings ([626467b](https://github.com/adonisjs/mrm-preset/commit/626467be69e6e06eea5a29860844a64679fa3905))
+
+
+
 ## [2.3.3](https://github.com/adonisjs/mrm-preset/compare/2.3.2...2.3.3) (2020-06-28)
 
 
