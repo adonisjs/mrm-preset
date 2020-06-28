@@ -1,3 +1,12 @@
+## [2.3.3](https://github.com/adonisjs/mrm-preset/compare/2.3.2...2.3.3) (2020-06-28)
+
+
+### Features
+
+* **Prettier:** use tabs over spaces and increase line length ([#12](https://github.com/adonisjs/mrm-preset/issues/12)) ([840561a](https://github.com/adonisjs/mrm-preset/commit/840561a156f4a2fa1f648b58b9eeca3940ff6aeb))
+
+
+
 ## [2.3.2](https://github.com/adonisjs/mrm-preset/compare/2.3.1...2.3.2) (2020-06-24)
 
 
