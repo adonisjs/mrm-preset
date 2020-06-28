@@ -38,6 +38,7 @@ function task () {
    */
   const prettierIgnore = lines('.prettierignore')
   prettierIgnore.add('build')
+  prettierIgnore.add('README.md')
   prettierIgnore.save()
 
   /**
