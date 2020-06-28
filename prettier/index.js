@@ -13,15 +13,16 @@ function task () {
   /**
    * Add prettier file
    */
-  const prettierRc = json('.prettierrc.json')
+  const prettierRc = json('.prettierrc')
   prettierRc.set({
     trailingComma: 'es5',
-    tabWidth: 2,
     semi: false,
     singleQuote: true,
-    useTabs: false,
+    useTabs: true,
+    quoteProps: "consistent",
     bracketSpacing: true,
     arrowParens: 'always',
+    printWidth: 120,
   })
   prettierRc.save()
 
