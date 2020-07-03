@@ -1,3 +1,12 @@
+## [2.3.6](https://github.com/adonisjs/mrm-preset/compare/2.3.5...2.3.6) (2020-07-03)
+
+
+### Bug Fixes
+
+* do not overwrite existing pre-commit hook ([1177fca](https://github.com/adonisjs/mrm-preset/commit/1177fcab43a7c7617aa93a102f853fdb5b661adf))
+
+
+
 ## [2.3.5](https://github.com/adonisjs/mrm-preset/compare/2.3.4...2.3.5) (2020-07-03)
 
 
