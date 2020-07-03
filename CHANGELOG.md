@@ -1,3 +1,12 @@
+## [2.3.5](https://github.com/adonisjs/mrm-preset/compare/2.3.4...2.3.5) (2020-07-03)
+
+
+### Features
+
+* add task to generate npm audit report ([6b05242](https://github.com/adonisjs/mrm-preset/commit/6b05242d442f7d0cc8a807d451b7cea8e2cc6d3e))
+
+
+
 ## [2.3.4](https://github.com/adonisjs/mrm-preset/compare/2.3.3...2.3.4) (2020-06-28)
 
 
