@@ -15,10 +15,13 @@ function task () {
   /**
    * Add git hook to re-generate the TOC
    */
-  pkgFile.set(
-    'husky.hooks.pre-commit',
-    `doctoc README.md --title='## Table of contents' && git add README.md`
-  )
+  let preCommit = pkgFile.get('husky.hooks.pre-commit')
+  if (preCommit) {
+    preCommit = `${preCommit} && doctoc README.md --title='## Table of contents' && git add README.md`
+  } else {
+    preCommit = `doctoc README.md --title='## Table of contents' && git add README.md`
+  }
+  pkgFile.set('husky.hooks.pre-commit', preCommit)
 
   /**
    * Save the package file

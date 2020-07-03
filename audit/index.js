@@ -15,10 +15,13 @@ function task () {
   /**
    * Add git hook to generate npm audit report
    */
-  pkgFile.set(
-    'husky.hooks.pre-commit',
-    `npm audit --production --json | ./node_modules/.bin/npm-audit-html`
-  )
+  let preCommit = pkgFile.get('husky.hooks.pre-commit')
+  if (preCommit) {
+    preCommit = `${preCommit} && npm audit --production --json | ./node_modules/.bin/npm-audit-html`
+  } else {
+    preCommit = 'npm audit --production --json | ./node_modules/.bin/npm-audit-html'
+  }
+  pkgFile.set('husky.hooks.pre-commit', preCommit)
 
   /**
    * Save the package file
