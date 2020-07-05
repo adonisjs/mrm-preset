@@ -1,3 +1,12 @@
+## [2.3.7](https://github.com/adonisjs/mrm-preset/compare/2.3.6...2.3.7) (2020-07-05)
+
+
+### Bug Fixes
+
+* audit report should commit the html file ([6b0d511](https://github.com/adonisjs/mrm-preset/commit/6b0d511f62168ddb7fcdf6682d3c6ed36695fb92))
+
+
+
 ## [2.3.6](https://github.com/adonisjs/mrm-preset/compare/2.3.5...2.3.6) (2020-07-03)
 
 
