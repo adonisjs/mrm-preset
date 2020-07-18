@@ -10,6 +10,7 @@
       "audit",
       "contributing",
       "editorconfig",
+      "probot",
       "github",
       "gitignore",
       "license",
@@ -20,7 +21,8 @@
       "readme-toc",
       "travis",
       "validateCommit",
-      "np"
+      "np",
+      "labels"
     ]
   }
 }
