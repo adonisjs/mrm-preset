@@ -167,7 +167,7 @@ const probotApps = {
       value: 'lock'
     },
   ],
-  name: 'services'
+  name: 'probotApps'
 }
 
 /**
@@ -191,6 +191,7 @@ async function task () {
   license.default = existingAnswers.license
   services.default = existingAnswers.services
   appveyorUsername.default = existingAnswers.appveyorUsername
+  probotApps.default = existingAnswers.probotApps
 
   const answers = await inquirer.prompt([
     gitOrigin,
