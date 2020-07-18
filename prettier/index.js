@@ -22,7 +22,7 @@ function task () {
     quoteProps: "consistent",
     bracketSpacing: true,
     arrowParens: 'always',
-    printWidth: 120,
+    printWidth: 100,
   })
   prettierRc.save()
 
