@@ -113,7 +113,7 @@ const license = {
  */
 const services = {
   type: 'checkbox',
-  message: 'Select the CI services you are planning to use',
+  message: 'Select the CI services you want to use',
   choices: [
     {
       name: 'Travis',
@@ -151,6 +151,26 @@ const appveyorUsername = {
 }
 
 /**
+ * The probot applications to use
+ * @type {Object}
+ */
+const probotApps = {
+  type: 'checkbox',
+  message: 'Select the probot applications you want to use',
+  choices: [
+    {
+      name: 'Stale Issues',
+      value: 'stale'
+    },
+    {
+      name: 'Lock Issues',
+      value: 'lock'
+    },
+  ],
+  name: 'services'
+}
+
+/**
  * Running the task, asking questions and create a project
  * specific config file.
  *
@@ -179,7 +199,8 @@ async function task () {
     isCore,
     license,
     services,
-    appveyorUsername
+    appveyorUsername,
+    probotApps
   ])
 
   const fileContent = {
@@ -188,7 +209,8 @@ async function task () {
     license: answers.license,
     services: answers.services,
     appveyorUsername: answers.appveyorUsername,
-    minNodeVersion: answers.minNodeVersion
+    minNodeVersion: answers.minNodeVersion,
+    probotApps: answers.probotApps
   }
 
   debug('init %o', fileContent)

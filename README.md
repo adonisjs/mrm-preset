@@ -29,6 +29,7 @@ AdonisJs preset for [mrm](https://github.com/sapegin/mrm) to keep the project co
     - [Typescript setup](#typescript-setup)
     - [Pkg ok](#pkg-ok)
   - [Prettier](#prettier)
+  - [Probot applications](#probot-applications)
   - [Readme file](#readme-file)
   - [Readme file TOC](#readme-file-toc)
   - [Travis](#travis)
@@ -182,6 +183,7 @@ Creates issues and PR template for Github. The contents of these templates will 
 
 1. [Issues template content](https://github.com/adonisjs/mrm-preset/blob/master/github/templates/issues.md)
 2. [PR template](https://github.com/adonisjs/mrm-preset/blob/master/github/templates/pr.md)
+
 ### Gitignore template
 
 Creates `.gitignore` file in the root of your project. Following files and folders are ignored by default. However, you can add more to the template.
@@ -201,6 +203,7 @@ docs
 dist
 shrinkwrap.yaml
 ```
+
 
 
 ### License template
@@ -272,6 +275,13 @@ Also `tsconfig.json` and `tslint.json` files will be created. You are free to mo
 ### Prettier
 
 Installs `prettier` and `eslint-plugin-prettier` and `eslint-config-prettier` to setup prettier along side with `eslint`. Also the task will check, if `.eslintrc.json` file exists and then only performs the eslint specific setup
+
+### Probot applications
+
+Configures certain probot application templates inside the `.github` directory. Currently, following apps are supported.
+
+- https://probot.github.io/apps/stale/
+- https://probot.github.io/apps/lock/
 
 ### Readme file
 
