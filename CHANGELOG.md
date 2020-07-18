@@ -1,3 +1,18 @@
+# [2.4.0](https://github.com/adonisjs/mrm-preset/compare/2.3.7...2.4.0) (2020-07-18)
+
+
+### Bug Fixes
+
+* prompt name ([e5f4842](https://github.com/adonisjs/mrm-preset/commit/e5f4842bd38f913627bb6810ab0bc44faaa0eb6e))
+
+
+### Features
+
+* add probot task ([f08a7a7](https://github.com/adonisjs/mrm-preset/commit/f08a7a7370284281470ecb7912432bbe875bd6ff))
+* add task for syncing labels ([429c980](https://github.com/adonisjs/mrm-preset/commit/429c9800fb65a779f2d3354cb0d24bdfcb34db8b))
+
+
+
 ## [2.3.7](https://github.com/adonisjs/mrm-preset/compare/2.3.6...2.3.7) (2020-07-05)
 
 
