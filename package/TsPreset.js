@@ -67,12 +67,17 @@ class TsPreset {
     /**
      * Set files to publish along with the main file
      */
-    pkgFile.set('main', 'build/index.js')
-    pkgFile.set('files', [
-      'build/src',
-      'build/index.d.ts',
-      'build/index.js',
-    ])
+    if (!pkgFile.get('main')) {
+      pkgFile.set('main', 'build/index.js')
+    }
+
+    if (!pkgFile.get('files')) {
+      pkgFile.set('files', [
+        'build/src',
+        'build/index.d.ts',
+        'build/index.js',
+      ])
+    }
 
     debug('creating files %o', ['tsconfig.json'])
 
