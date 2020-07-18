@@ -38,7 +38,12 @@ function task () {
    */
   const prettierIgnore = lines('.prettierignore')
   prettierIgnore.add('build')
-  prettierIgnore.add('README.md')
+  prettierIgnore.add('docs')
+  prettierIgnore.add('*.md')
+  prettierIgnore.add('config.json')
+  prettierIgnore.add('.eslintrc.json')
+  prettierIgnore.add('package.json')
+  prettierIgnore.add('*.html')
   prettierIgnore.save()
 
   /**
