@@ -11,16 +11,19 @@ const { packageJson, install } = require('mrm-core')
 
 function task () {
   const pkgFile = packageJson()
+  const hook = `doctoc README.md --title='## Table of contents' && git add README.md`
 
   /**
    * Add git hook to re-generate the TOC
    */
   let preCommit = pkgFile.get('husky.hooks.pre-commit')
-  if (preCommit) {
-    preCommit = `${preCommit} && doctoc README.md --title='## Table of contents' && git add README.md`
-  } else {
-    preCommit = `doctoc README.md --title='## Table of contents' && git add README.md`
+
+  if (!preCommit) {
+    preCommit = hook
+  } else if (!preCommit.includes(hook)) {
+    preCommit = `${preCommit} && ${hook}`
   }
+
   pkgFile.set('husky.hooks.pre-commit', preCommit)
 
   /**
