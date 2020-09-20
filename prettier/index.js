@@ -44,6 +44,7 @@ function task () {
   prettierIgnore.add('.eslintrc.json')
   prettierIgnore.add('package.json')
   prettierIgnore.add('*.html')
+  prettierIgnore.add('*.txt')
   prettierIgnore.save()
 
   /**
