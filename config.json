@@ -7,7 +7,6 @@
     "all": [
       "appveyor",
       "circleci",
-      "audit",
       "contributing",
       "editorconfig",
       "probot",
