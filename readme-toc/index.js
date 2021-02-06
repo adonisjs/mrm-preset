@@ -11,7 +11,7 @@ const { packageJson, install } = require('mrm-core')
 
 function task () {
   const pkgFile = packageJson()
-  const hook = `doctoc README.md --title='## Table of contents' && git add README.md`
+  const hook = 'doctoc README.md --title=\'## Table of contents\' && git add README.md'
 
   /**
    * Add git hook to re-generate the TOC

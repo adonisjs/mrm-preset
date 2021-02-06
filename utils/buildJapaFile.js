@@ -10,25 +10,18 @@
 const recast = require('recast')
 
 /**
- * Added to japaFile.js for Typescript
+ * Added to japaFile.js
  */
-const japaCliTsContent = `const { configure } = require('japa')
-configure({
-  files: ['test/**/*.spec.ts']
-})`
+const japaFileContents = `const { configure } = require('japa')
 
-/**
- * Added to japaFile.js for Javascript
- */
-const japaCliJsContent = `const { configure } = require('japa')
 configure({
-  files: ['test/**/*.spec.js']
+  files: ['test/**/*.spec.ts'],
 })`
 
 /**
  * Add to japaFile.js when project uses Typescript
  */
-const tsRegisterContent = `require('ts-node/register')\n\n`
+const tsRegisterContent = 'require(\'@adonisjs/require-ts/build/register\')\n\n'
 
 /**
  * Returns the name of the require module. It is the job
@@ -54,15 +47,8 @@ function getRequireName (node) {
 }
 
 module.exports = function (existingContent, ts) {
-  let japaCliRequired = false
-
-  /**
-   * We set tsNodeRequired to true when project is not using
-   * typescript. By doing this, we simply skip the typescript
-   * related checks and do not add typescript related code
-   * to japaFile.js
-   */
-  let tsNodeRequired = !ts
+  let usingRequireTs = false
+  let usingJapa = false
 
   const ast = recast.parse(existingContent)
 
@@ -72,12 +58,12 @@ module.exports = function (existingContent, ts) {
    */
   recast.types.visit(ast, {
     visitCallExpression ({ node }) {
-      if (!japaCliRequired && getRequireName(node) === 'japa') {
-        japaCliRequired = true
+      if (getRequireName(node) === 'japa') {
+        usingJapa = true
       }
 
-      if (!tsNodeRequired && getRequireName(node) === 'ts-node/register') {
-        tsNodeRequired = true
+      if (getRequireName(node) === '@adonisjs/require-ts/build/register') {
+        usingRequireTs = true
       }
 
       return false
@@ -85,22 +71,26 @@ module.exports = function (existingContent, ts) {
   })
 
   /**
-   * Add japa/cli require statement when missing
+   * Add japa file contents
    */
-  if (!japaCliRequired) {
-    ast.program.body = recast.parse(ts ? japaCliTsContent : japaCliJsContent).program.body.concat(ast.program.body)
+  if (!usingJapa) {
+    if (!usingRequireTs) {
+      ast.program.body = recast.parse(japaFileContents).program.body.concat(ast.program.body)
+    } else {
+      ast.program.body = ast.program.body.concat(recast.parse(`\n\n${japaFileContents}`).program.body)
+    }
   }
 
   /**
    * Add ts related code when missing. Also make sure this is added
    * as the first line inside the japaFile.js file
    */
-  if (!tsNodeRequired) {
+  if (!usingRequireTs) {
     ast.program.body = recast.parse(tsRegisterContent).program.body.concat(ast.program.body)
   }
 
   /**
-   * String and return a string back
+   * Print and return a string back
    */
   return recast.print(ast).code
 }

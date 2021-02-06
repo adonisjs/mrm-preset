@@ -10,7 +10,7 @@ AdonisJs is a community driven project. You are free to contribute in any of the
 
 ## Coding style
 
-Majority of AdonisJs core packages are written in Typescript. Having a brief knowledge of Typescript is required to contribute to the core. [Learn more](https://adonisjs.com/coding-style) about the same.
+Majority of AdonisJS core packages are written in Typescript. Having a brief knowledge of Typescript is required to contribute to the core. [Learn more](https://adonisjs.com/coding-style) about the same.
 
 ## Fix bugs by creating PR's
 

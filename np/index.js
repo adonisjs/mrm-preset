@@ -22,7 +22,7 @@ function task () {
    */
   pkgFile.set('np', {
     contents: '.',
-    anyBranch: false,
+    anyBranch: false
   })
 
   /**

@@ -22,7 +22,7 @@ const mergeConfig = require('../utils/mergeConfig')
  */
 function task (config) {
   mergeConfig(config, {
-    probotApps: [],
+    probotApps: []
   })
 
   if (config.probotApps.includes('stale')) {

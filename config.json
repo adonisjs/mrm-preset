@@ -1,9 +1,6 @@
 {
   "aliases": {
-    "setup": [
-      "init",
-      "all"
-    ],
+    "setup": ["init", "all"],
     "all": [
       "appveyor",
       "circleci",
@@ -18,7 +15,6 @@
       "prettier",
       "readme",
       "readme-toc",
-      "travis",
       "validateCommit",
       "np",
       "labels"

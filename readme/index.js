@@ -25,22 +25,15 @@ function task (config) {
     owner: ghAttributes.owner,
     ghUsername: gitUserName(),
     force: false,
-    appveyorUsername: ghAttributes.owner,
+    appveyorUsername: ghAttributes.owner
   })
 
   const servicesList = config.services || []
 
   /**
-   * Adding typescript when `ts` is true
+   * Adding npm, license and typescript services
    */
-  if (config.ts) {
-    servicesList.push('typescript')
-  }
-
-  /**
-   * Adding npm and license services too
-   */
-  servicesList.push('npm', 'license')
+  servicesList.push('npm', 'license', 'typescript')
 
   const services = new Services(servicesList, {
     owner: config.owner,
@@ -57,17 +50,17 @@ function task (config) {
    * AdonisJS banner
    */
   if (config.packageName.startsWith('@adonisjs')) {
-    banner = `<div align="center"><img src="https://res.cloudinary.com/adonisjs/image/upload/q_100/v1564392111/adonis-banner_o9lunk.png" width="600px"></div>`
+    banner = '<div align="center"><img src="https://res.cloudinary.com/adonisjs/image/upload/q_100/v1564392111/adonis-banner_o9lunk.png" width="600px"></div>'
   }
 
   /**
    * Poppinss banner
    */
   if (config.packageName.startsWith('@poppinss')) {
-    banner = `<div align="center"><img src="https://res.cloudinary.com/adonisjs/image/upload/q_100/v1557762307/poppinss_iftxlt.jpg" width="600px"></div>`
+    banner = '<div align="center"><img src="https://res.cloudinary.com/adonisjs/image/upload/q_100/v1557762307/poppinss_iftxlt.jpg" width="600px"></div>'
   }
 
-  let badges = services.getReferences()
+  const badges = services.getReferences()
 
   readme.apply(Object.assign({
     servicesUrls: services.getUrls(),

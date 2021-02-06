@@ -7,13 +7,13 @@
 * file that was distributed with this source code.
 */
 
-const { json, install, uninstall, deleteFiles } = require('mrm-core')
+const { json, install, uninstall } = require('mrm-core')
 const debug = require('debug')('adonis:mrm-package')
 
 class TsPreset {
   constructor () {
     this.dependencies = [
-      'ts-node',
+      '@adonisjs/require-ts',
       'typescript',
       '@types/node',
       'del-cli'
@@ -62,7 +62,6 @@ class TsPreset {
     pkgFile.setScript('compile', 'npm run lint && npm run clean && tsc')
     pkgFile.setScript('build', 'npm run compile')
     pkgFile.setScript('prepublishOnly', 'npm run build')
-    pkgFile.set('nyc.extension', ['.ts'])
 
     /**
      * Set files to publish along with the main file
@@ -75,36 +74,12 @@ class TsPreset {
       pkgFile.set('files', [
         'build/src',
         'build/index.d.ts',
-        'build/index.js',
+        'build/index.js'
       ])
     }
 
     debug('creating files %o', ['tsconfig.json'])
-
     json('tsconfig.json').merge({ extends: './node_modules/@adonisjs/mrm-preset/_tsconfig' }).save()
-  }
-
-  /**
-   * Reverting mutations done for a typescript project
-   *
-   * @method down
-   *
-   * @param  {Object}  pkgFile
-   *
-   * @return {void}
-   */
-  down (pkgFile) {
-    debug('removing files/dirs %o', ['tsconfig.json', 'build'])
-    deleteFiles(['tsconfig.json', 'build'])
-
-    pkgFile.removeScript('lint')
-    pkgFile.removeScript('clean')
-    pkgFile.removeScript('compile')
-    pkgFile.removeScript('build')
-    pkgFile.removeScript('prepublishOnly')
-    pkgFile.unset('nyc.extension', ['.ts'])
-    pkgFile.unset('main')
-    pkgFile.unset('files')
   }
 }
 

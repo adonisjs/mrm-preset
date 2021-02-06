@@ -15,25 +15,17 @@ AdonisJs preset for [mrm](https://github.com/sapegin/mrm) to keep the project co
   - [Contributing.md template](#contributingmd-template)
   - [Editorconfig file](#editorconfig-file)
   - [Eslint](#eslint)
-  - [Gitflow](#gitflow)
-    - [release:start](#releasestart)
-    - [release:end](#releaseend)
   - [Github templates](#github-templates)
   - [Gitignore template](#gitignore-template)
   - [License template](#license-template)
   - [Np release management](#np-release-management)
   - [Package file generation](#package-file-generation)
     - [Testing](#testing)
-    - [Linter](#linter)
-    - [Coverage reporting](#coverage-reporting)
     - [Typescript setup](#typescript-setup)
-    - [Pkg ok](#pkg-ok)
   - [Prettier](#prettier)
   - [Probot applications](#probot-applications)
   - [Readme file](#readme-file)
   - [Readme file TOC](#readme-file-toc)
-  - [Travis](#travis)
-  - [TypeDoc](#typedoc)
   - [Validate commit](#validate-commit)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -157,25 +149,6 @@ The file is generated with settings defined inside the [task file](https://githu
 
 Installs `eslint` and `eslint-plugin-adonis`. Also it will remove tslint and it's related dependencies from the project.
 
-### Gitflow
-Adds git flow based release commands to npm scripts. 
-
-#### release:start
-Starts the **git flow** release by running `git flow release start $1` under the hood.
-
-```
-npm run release:start 1.0.0
-```
-
-#### release:end
-Ends the **git flow** release by running multiple commands to create and merge release branches with git tags. Commands executed under the hood will use `--no-verify` flag to ignore git hooks, which can conflict with release commit messages style.
-
-```
-npm run release:end 1.0.0
-```
-
-Before running the above command, do make sure to update the **npm version**, **generate the changelog** and **commit these changes**.
-
 ### Github templates
 
 Creates issues and PR template for Github. The contents of these templates will be pre-filled anytime someone wants to create a new issue or PR.
@@ -234,28 +207,18 @@ The list of operations is based on my personal learnings while maintaining open 
 > If your project decides to move between **Javascript** and **Typescript** in between, then this task will take care of removing the unwanted dependencies and install the correct one's.
 
 #### Testing
-The [japa](https://github.com/thetutlage/japa) test runner is installed along side with `japaFile.js`. If your project makes use of Typescript, then the test runner will configured to run `.ts` files.
 
-#### Linter
-If using Javascript then [standard](https://standardjs.com/) will be configured, otherwise for Typescript projects [tslint](https://palantir.github.io/tslint/) is used.
-
-#### Coverage reporting
-If you select `coveralls` in the list of `services`, then coverage reporting dependencies will be installed and `after_test` hooks are set.
-
-1. `nyc` is used for collecting coverage report.
-2. `coveralls` node module is used to pipe the coverage report to Coveralls.
+The [japa](https://github.com/thetutlage/japa) test runner is installed along side with `japaFile.js`.
 
 #### Typescript setup
+
 Typescript projects will have additional setup and dependencies to work out of the box.
 
 Following dependencies are installed.
 
-1. ts-node
-2. typescript
-3. @types/node
-4. tslint
-5. tslint-eslint-rules
-
+1. `ts-node`
+2. `typescript`
+3. `@adonisjs/require-ts`
 
 And following scripts are defined
 
@@ -263,13 +226,7 @@ And following scripts are defined
 2. `compile` to compile the Typescript code to Javascript.
 3. `prePublishOnly` to compile before publishing to npm.
 
-
 Also `tsconfig.json` and `tslint.json` files will be created. You are free to modify these files
-
-#### Pkg ok
-
-[pkg-ok](https://npm.im/pkg-ok) is installed to ensure that files that get published to npm does exists. Make sure to read their README file for more info.
-
 
 ### Prettier
 
@@ -291,33 +248,6 @@ Generates table of contents for the readme file. This tasks registers a `git hoo
 
 Under the hood npm package [doctoc](https://npm.im/doctoc) is used for generating the TOC, so make sure to read their readme file as well.
 
-### Travis 
-Travis tasks creates a configuration file `(.travis.yml)` in the root of your project. The tasks depends on the config file `config.json` and requires following key/value pairs.
-
-```json
-{
-  "services": ["travis"],
-  "minNodeVersion": "10.0"
-}
-```
-
-To remove support for `travis` from your project, just `npm run mrm travis` task by removing the `travis` keyword from the `services` array.
-
-```json
-{
-  "services": []
-}
-```
-
-```sh
-npm run mrm travis
-```
-### TypeDoc
-
-Configures [typedoc](http://typedoc.org/) to generate API documentation for Typescript projects. Along with that, two additional plugins are installed.
-
-- typedoc-plugin-external-module-name
-- typedoc-plugin-single-line-tags
 ### Validate commit
 
 Configures a git hook to validate the commit messages. This is great, if you want to ensure that contributors to your project must form commit messages as per a given standard.

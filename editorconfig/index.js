@@ -19,7 +19,7 @@ const debug = require('debug')('adonis:mrm-editorconfig')
  */
 const defaults = {
   '*': {
-    indent_style: 'tab',
+    indent_style: 'space',
     indent_size: 2,
     end_of_line: 'lf',
     charset: 'utf-8',
@@ -33,8 +33,8 @@ const defaults = {
     indent_style: 'ignore',
     insert_final_newline: 'ignore'
   },
-  'MakeFile': {
-    indent_style: 'tab'
+  MakeFile: {
+    indent_style: 'space'
   },
   '*.md': {
     trim_trailing_whitespace: false

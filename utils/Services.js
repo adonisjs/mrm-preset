@@ -38,11 +38,6 @@ class Services {
    */
   getServiceData (service) {
     switch (service) {
-      case 'travis':
-        return {
-          url: `https://travis-ci.org/${this.repo}`,
-          image: `https://img.shields.io/travis/${this.repo}/master.svg?style=for-the-badge&logo=travis`
-        }
       case 'appveyor':
         return {
           url: `https://ci.appveyor.com/project/${this.appveyorUsername}/${this.repoName}`,
@@ -52,11 +47,6 @@ class Services {
         return {
           url: `https://circleci.com/gh/${this.repo}`,
           image: `https://img.shields.io/circleci/project/github/${this.repo}/master.svg?style=for-the-badge&logo=circleci`
-        }
-      case 'coveralls':
-        return {
-          url: `https://coveralls.io/github/${this.repo}`,
-          image: `https://img.shields.io/coveralls/${this.repo}/master.svg?style=for-the-badge`
         }
       case 'npm':
         return {

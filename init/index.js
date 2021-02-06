@@ -7,23 +7,11 @@
 * file that was distributed with this source code.
 */
 
+const chalk = require('chalk')
 const inquirer = require('inquirer')
 const { json, ini } = require('mrm-core')
-const debug = require('debug')('adonis:mrm-init')
 const { execSync } = require('child_process')
-const chalk = require('chalk')
-
-/**
- * Asking for project language
- *
- * @type {Object}
- */
-const projectLang = {
-  type: 'list',
-  choices: ['Typescript', 'Javascript'],
-  message: 'Select the language you want to code in',
-  name: 'lang'
-}
+const debug = require('debug')('adonis:mrm-init')
 
 const gitOrigin = {
   type: 'input',
@@ -49,7 +37,7 @@ const gitOrigin = {
  */
 const isCore = {
   type: 'confirm',
-  message: 'Is it a package written by the AdonisJs core team',
+  message: 'Is it a package written by the AdonisJS core team',
   name: 'core'
 }
 
@@ -64,20 +52,8 @@ const minNodeVersion = {
   name: 'minNodeVersion',
   choices: [
     {
-      name: '10.21.0 (Maintenance LTS)',
-      value: '10.21.0'
-    },
-    {
-      name: '12.0.0',
-      value: '12.0.0'
-    },
-    {
-      name: '12.18.2 (LTS)',
-      value: '12.18.2'
-    },
-    {
-      name: '14.5.0',
-      value: '14.5.0'
+      name: '14.15.4 (LTS)',
+      value: '14.15.4'
     },
     {
       name: 'latest',
@@ -108,16 +84,8 @@ const services = {
   message: 'Select the CI services you want to use',
   choices: [
     {
-      name: 'Travis',
-      value: 'travis'
-    },
-    {
       name: 'Appveyor',
       value: 'appveyor'
-    },
-    {
-      name: 'Coveralls',
-      value: 'coveralls'
     },
     {
       name: 'Circle CI',
@@ -157,7 +125,7 @@ const probotApps = {
     {
       name: 'Lock Issues',
       value: 'lock'
-    },
+    }
   ],
   name: 'probotApps'
 }
@@ -177,7 +145,6 @@ async function task () {
   /**
    * Fill existing values
    */
-  projectLang.default = existingAnswers.ts ? 'Typescript' : 'Javascript'
   minNodeVersion.default = existingAnswers.minNodeVersion
   isCore.default = existingAnswers.core
   license.default = existingAnswers.license
@@ -187,7 +154,6 @@ async function task () {
 
   const answers = await inquirer.prompt([
     gitOrigin,
-    projectLang,
     minNodeVersion,
     isCore,
     license,
@@ -198,7 +164,6 @@ async function task () {
 
   const fileContent = {
     core: answers.core,
-    ts: answers.lang === 'Typescript',
     license: answers.license,
     services: answers.services,
     appveyorUsername: answers.appveyorUsername,

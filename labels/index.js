@@ -22,7 +22,7 @@ function task (config) {
   pkgFile
     .setScript(
       'sync-labels',
-      `github-label-sync --labels ./node_modules/@adonisjs/mrm-preset/gh-labels.json ${config.repo}`,
+      `github-label-sync --labels ./node_modules/@adonisjs/mrm-preset/gh-labels.json ${config.repo}`
     )
     .save()
 

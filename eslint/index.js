@@ -7,7 +7,7 @@
 * file that was distributed with this source code.
 */
 
-const { json, uninstall, install, packageJson, lines } = require('mrm-core')
+const { json, install, packageJson, lines } = require('mrm-core')
 
 function task () {
   /**
@@ -35,16 +35,7 @@ function task () {
    * Install required dependencies
    */
   install(['eslint', 'eslint-plugin-adonis'])
-
-  // Remove tslint
-  const tsLint = json('tslint.json')
-  tsLint.delete()
-
-  /**
-   * Remove tslint related dependencies
-   */
-  uninstall(['tslint-eslint-rules', 'tslint'])
 }
 
-task.description = 'Adds eslint to the project and remove tslint'
+task.description = 'Adds eslint to the project'
 module.exports = task

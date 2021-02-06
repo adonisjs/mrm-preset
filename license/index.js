@@ -7,17 +7,18 @@
 * file that was distributed with this source code.
 */
 
-const createLicense = require('mrm-task-license')
-const mergeConfig = require('../utils/mergeConfig')
 const gitUserName = require('git-user-name')
 const gitUserEmail = require('git-user-email')
+const createLicense = require('mrm-task-license')
+
+const mergeConfig = require('../utils/mergeConfig')
 
 function task (config) {
   mergeConfig(config, {
     licenseFile: 'LICENSE.md',
     name: gitUserName(),
     license: 'Unlicensed',
-    email: gitUserEmail() || 'virk',
+    email: gitUserEmail() || 'virk'
   })
   createLicense({
     defaults: function () {
@@ -26,7 +27,7 @@ function task (config) {
     require: function () {
       return this
     },
-    values() {
+    values () {
       return config
     }
   })

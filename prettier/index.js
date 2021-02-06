@@ -18,11 +18,11 @@ function task () {
     trailingComma: 'es5',
     semi: false,
     singleQuote: true,
-    useTabs: true,
-    quoteProps: "consistent",
+    useTabs: false,
+    quoteProps: 'consistent',
     bracketSpacing: true,
     arrowParens: 'always',
-    printWidth: 100,
+    printWidth: 100
   })
   prettierRc.save()
 
@@ -58,7 +58,7 @@ function task () {
   if (eslintRc.exists()) {
     eslintRc.merge({ extends: ['prettier', 'prettier/@typescript-eslint'] })
     eslintRc.merge({ plugins: ['prettier'] })
-    eslintRc.set('rules.prettier/prettier', ['error'])
+    eslintRc.set('rules.prettier/prettier', ['error', { endOfLine: 'auto' }])
     eslintRc.save()
   }
 

@@ -48,7 +48,7 @@ function task (config) {
         },
         {
           save_cache: {
-            paths: [ 'node_modules' ],
+            paths: ['node_modules'],
             key: 'v1-dependencies-{{ checksum "package.json" }}'
           }
         },
