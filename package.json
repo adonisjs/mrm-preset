@@ -4,7 +4,8 @@
   "description": "MRM preset used by adonisjs for all core packages",
   "main": "config.json",
   "scripts": {
-    "lint": "standard"
+    "lint": "standard",
+    "release": "np"
   },
   "keywords": [
     "mrm",
