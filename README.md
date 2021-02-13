@@ -173,7 +173,9 @@ coverage
 build
 docs
 dist
+yarn.lock
 shrinkwrap.yaml
+package-lock.json
 ```
 
 
