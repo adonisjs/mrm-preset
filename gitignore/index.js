@@ -21,6 +21,7 @@ function task () {
   const linesToWrite = [
     'node_modules',
     'coverage',
+    'test/__app',
     '.DS_STORE',
     '.nyc_output',
     '.idea',
