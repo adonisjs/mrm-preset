@@ -163,6 +163,7 @@ Creates `.gitignore` file in the root of your project. Following files and folde
 ```
 node_modules
 coverage
+test/__app
 .DS_STORE
 .nyc_output
 .idea
