@@ -56,7 +56,7 @@ function task () {
    * Update if file exists, otherwise ignore
    */
   if (eslintRc.exists()) {
-    eslintRc.merge({ extends: ['prettier', 'prettier/@typescript-eslint'] })
+    eslintRc.merge({ extends: ['prettier'] })
     eslintRc.merge({ plugins: ['prettier'] })
     eslintRc.set('rules.prettier/prettier', ['error', { endOfLine: 'auto' }])
     eslintRc.save()

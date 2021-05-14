@@ -20,17 +20,7 @@ function task (config) {
     license: 'Unlicensed',
     email: gitUserEmail() || 'virk'
   })
-  createLicense({
-    defaults: function () {
-      return this
-    },
-    require: function () {
-      return this
-    },
-    values () {
-      return config
-    }
-  })
+  createLicense(config)
 }
 
 task.description = 'Adds LICENSE.md file'
