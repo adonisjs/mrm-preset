@@ -4,6 +4,7 @@
     "all": [
       "appveyor",
       "circleci",
+      "github-actions",
       "contributing",
       "editorconfig",
       "probot",

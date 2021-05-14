@@ -16,6 +16,7 @@ AdonisJs preset for [mrm](https://github.com/sapegin/mrm) to keep the project co
   - [Editorconfig file](#editorconfig-file)
   - [Eslint](#eslint)
   - [Github templates](#github-templates)
+  - [Circle CI](#circle-ci-1)
   - [Gitignore template](#gitignore-template)
   - [License template](#license-template)
   - [Np release management](#np-release-management)
@@ -155,6 +156,28 @@ Creates issues and PR template for Github. The contents of these templates will 
 
 1. [Issues template content](https://github.com/adonisjs/mrm-preset/blob/master/github/templates/issues.md)
 2. [PR template](https://github.com/adonisjs/mrm-preset/blob/master/github/templates/pr.md)
+
+### Circle CI 
+Github actions tasks creates a configuration file `(.github/workflows/test.yml)` in the root of your project. The tasks depends on the config file `config.json` and requires following key/value pairs.
+
+```json
+{
+  "services": ["github-actions"],
+  "minNodeVersion": "14.15.4"
+}
+```
+
+To remove support for `github-actions` from your project, just `npm run mrm github-actions` task by removing the `github-actions` keyword from the `services` array.
+
+```json
+{
+  "services": []
+}
+```
+
+```sh
+npm run mrm github-actions
+```
 
 ### Gitignore template
 

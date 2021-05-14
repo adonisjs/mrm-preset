@@ -52,8 +52,8 @@ const minNodeVersion = {
   name: 'minNodeVersion',
   choices: [
     {
-      name: '14.15.4 (LTS)',
-      value: '14.15.4'
+      name: '14.17.0 (LTS)',
+      value: '14.17.0'
     },
     {
       name: 'latest',
@@ -90,7 +90,11 @@ const services = {
     {
       name: 'Circle CI',
       value: 'circleci'
-    }
+    },
+    {
+      name: 'Github actions',
+      value: 'github-actions'
+    },
   ],
   name: 'services'
 }
