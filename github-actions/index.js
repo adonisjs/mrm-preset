@@ -51,16 +51,13 @@ function task (config) {
         {
           uses: 'actions/checkout@v2'
         },
-      ].concat(versions.map((version) => {
-        return {
-          name: `Use Node.js \${{ matrix.${version} }}`,
+        {
+          name: 'Use Node.js ${{ matrix.node-version }}',
           uses: 'actions/setup-node@v1',
           with: {
-            'node-version': `\${{ matrix.${version} }}`
+            'node-version': '${{ matrix.node-version }}'
           }
-        }
-      }))
-      .concat([
+        },
         {
           name: 'Install',
           run: 'npm install'
@@ -69,7 +66,7 @@ function task (config) {
           name: 'Run tests',
           run: 'npm test'
         }
-      ])
+      ]
     }
   }
 
