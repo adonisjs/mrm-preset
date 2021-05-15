@@ -3,6 +3,7 @@
   "version": "3.0.0",
   "description": "MRM preset used by adonisjs for all core packages",
   "main": "config.json",
+  "files": ["*"],
   "scripts": {
     "lint": "standard",
     "release": "np"
