@@ -1,4 +1,5 @@
-### Circle CI 
+### Github Actions 
+
 Github actions tasks creates a configuration file `(.github/workflows/test.yml)` in the root of your project. The tasks depends on the config file `config.json` and requires following key/value pairs.
 
 ```json
