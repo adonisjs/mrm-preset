@@ -16,7 +16,7 @@
       "prettier",
       "readme",
       "readme-toc",
-      "validateCommit",
+      "validate-commit",
       "np",
       "labels"
     ]
