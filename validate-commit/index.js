@@ -44,7 +44,7 @@ function task () {
   const commitFile = lines('.husky/commit-msg')
     .add('#!/bin/sh')
     .add('. "$(dirname "$0")/_/husky.sh"')
-    .add('HUSKY_GIT_PARAMS=$1 node ./node_modules/@adonisjs/mrm-preset/validateCommit/conventional/validate.js')
+    .add('HUSKY_GIT_PARAMS=$1 node ./node_modules/@adonisjs/mrm-preset/validate-commit/conventional/validate.js')
 
   const fileAlreadyExists = commitFile.exists()
   commitFile.save()
