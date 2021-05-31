@@ -165,18 +165,18 @@ async function task () {
    */
   if (existingAnswers.minNodeVersion) {
     minNodeVersion.choices.unshift({
-      name: `${existingAnswers.minNodeVersion} (from config)`,
+      name: `${existingAnswers.minNodeVersion} (from ./config.json)`,
       value: existingAnswers.minNodeVersion,
     })
+    minNodeVersion.default = 0
   }
 
-  minNodeVersion.default = existingAnswers.minNodeVersion
   isCore.default = existingAnswers.core
   license.default = existingAnswers.license
   services.default = existingAnswers.services
   appveyorUsername.default = existingAnswers.appveyorUsername
-  probotApps.default = existingAnswers.probotApps
   runGhActionsOnWindows.default = existingAnswers.runGhActionsOnWindows
+  probotApps.default = existingAnswers.probotApps
 
   const answers = await inquirer.prompt([
     gitOrigin,

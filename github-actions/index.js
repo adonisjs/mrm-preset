@@ -15,7 +15,7 @@ function getJobsPayload(os, nodeVersions) {
     'runs-on': os,
     strategy: {
       matrix: {
-        'node-version': nodeVersions
+        'node-version': [].concat(nodeVersions)
       }
     },
     steps: [
