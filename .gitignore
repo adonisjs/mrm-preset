@@ -8,3 +8,4 @@ Thumbs.db
 *.log
 yarn.lock
 shrinkwrap.yaml
+package-lock.json
