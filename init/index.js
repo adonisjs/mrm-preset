@@ -53,7 +53,7 @@ const minNodeVersion = {
   choices: [
     {
       name: '14.17.0 (LTS)',
-      value: '14.17.0'
+      value: '14.17.0',
     },
     {
       name: 'latest',
@@ -115,6 +115,20 @@ const appveyorUsername = {
 }
 
 /**
+ * Ask if should configure github actions to run on windows too.
+ *
+ * @type {Object}
+ */
+const runGhActionsOnWindows = {
+  type: 'confirm',
+  message: 'Run github actions on windows?',
+  when: function (answers) {
+    return answers.services.indexOf('github-actions') > -1
+  },
+  name: 'runGhActionsOnWindows'
+}
+
+/**
  * The probot applications to use
  * @type {Object}
  */
@@ -149,12 +163,20 @@ async function task () {
   /**
    * Fill existing values
    */
+  if (existingAnswers.minNodeVersion) {
+    minNodeVersion.choices.unshift({
+      name: `${existingAnswers.minNodeVersion} (from config)`,
+      value: existingAnswers.minNodeVersion,
+    })
+  }
+
   minNodeVersion.default = existingAnswers.minNodeVersion
   isCore.default = existingAnswers.core
   license.default = existingAnswers.license
   services.default = existingAnswers.services
   appveyorUsername.default = existingAnswers.appveyorUsername
   probotApps.default = existingAnswers.probotApps
+  runGhActionsOnWindows.default = existingAnswers.runGhActionsOnWindows
 
   const answers = await inquirer.prompt([
     gitOrigin,
@@ -163,7 +185,8 @@ async function task () {
     license,
     services,
     appveyorUsername,
-    probotApps
+    probotApps,
+    runGhActionsOnWindows
   ])
 
   const fileContent = {
@@ -172,7 +195,8 @@ async function task () {
     services: answers.services,
     appveyorUsername: answers.appveyorUsername,
     minNodeVersion: answers.minNodeVersion,
-    probotApps: answers.probotApps
+    probotApps: answers.probotApps,
+    runGhActionsOnWindows: answers.runGhActionsOnWindows
   }
 
   debug('init %o', fileContent)
