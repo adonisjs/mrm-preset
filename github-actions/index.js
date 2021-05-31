@@ -10,6 +10,37 @@
 const { yaml, deleteFiles } = require('mrm-core')
 const mergeConfig = require('../utils/mergeConfig')
 
+function getJobsPayload(os, nodeVersions) {
+  return {
+    'runs-on': os,
+    strategy: {
+      matrix: {
+        'node-version': nodeVersions
+      }
+    },
+    steps: [
+      {
+        uses: 'actions/checkout@v2'
+      },
+      {
+        name: 'Use Node.js ${{ matrix.node-version }}',
+        uses: 'actions/setup-node@v1',
+        with: {
+          'node-version': '${{ matrix.node-version }}'
+        }
+      },
+      {
+        name: 'Install',
+        run: 'npm install'
+      },
+      {
+        name: 'Run tests',
+        run: 'npm test'
+      }
+    ]
+  }
+}
+
 function task (config) {
   mergeConfig(config, {
     services: ['github-actions'],
@@ -40,34 +71,8 @@ function task (config) {
    * run each version
    */
   const jobs = {
-    build: {
-      'runs-on': 'ubuntu-latest',
-      strategy: {
-        matrix: {
-          'node-version': versions
-        }
-      },
-      steps: [
-        {
-          uses: 'actions/checkout@v2'
-        },
-        {
-          name: 'Use Node.js ${{ matrix.node-version }}',
-          uses: 'actions/setup-node@v1',
-          with: {
-            'node-version': '${{ matrix.node-version }}'
-          }
-        },
-        {
-          name: 'Install',
-          run: 'npm install'
-        },
-        {
-          name: 'Run tests',
-          run: 'npm test'
-        }
-      ]
-    }
+    linux: getJobsPayload('ubuntu-latest', versions),
+    ...(config.runGhActionsOnWindows ? { windows: getJobsPayload('windows-latest', versions) } : {}),
   }
 
   githubActionsFile.set('jobs', jobs)
