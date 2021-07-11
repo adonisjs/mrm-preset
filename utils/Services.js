@@ -58,6 +58,11 @@ class Services {
           url: 'LICENSE.md',
           image: `https://img.shields.io/npm/l/${this.packageName}?color=blueviolet&style=for-the-badge`
         }
+      case 'github-actions':
+        return {
+          url: `https://img.shields.io/github/workflow/status/${this.repoName}/test?style=for-the-badge`,
+          image: `https://github.com/${this.repoName}/actions/workflows/test.yml`
+        }
       case 'typescript':
         return {
           url: '',
