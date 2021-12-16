@@ -28,7 +28,7 @@ function task () {
   /**
    * Set release script
    */
-  pkgFile.setScript('release', 'np')
+  pkgFile.setScript('release', 'np --message="chore(release): %s"')
   pkgFile.setScript('version', 'npm run build')
 
   /**
@@ -37,11 +37,10 @@ function task () {
   pkgFile.save()
 
   /**
-   * Create npmrc file to define commit format
+   * Remove old npmrc file
    */
   const npmrc = ini('.npmrc')
-  npmrc.set('_global', { message: '"chore(release): %s"' })
-  npmrc.save({ withSpaces: false })
+  npmrc.delete()
 }
 
 task.description = 'Adds np to do release management'

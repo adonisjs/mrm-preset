@@ -10,15 +10,24 @@
 const { join } = require('path')
 const { chmodSync } = require('fs')
 const { execSync } = require('child_process')
+const mergeConfig = require('../utils/mergeConfig')
 const { packageJson, install, lines } = require('mrm-core')
 
-function task () {
+function task (config) {
+  mergeConfig(config, {
+    generateToc: false
+  })
+
   /**
-   * Remove existing pre commit hook
+   * Remove existing pre commit hook from the package file
    */
   const pkgFile = packageJson()
   pkgFile.unset('husky.hooks.pre-commit')
   pkgFile.save()
+
+  if (!config.generateToc) {
+    return
+  }
 
   /**
    * Setup husky

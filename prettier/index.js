@@ -11,10 +11,17 @@ const { json, install, packageJson, lines } = require('mrm-core')
 
 function task () {
   /**
-   * Add prettier file
+   * Delete old prettierrc file
    */
   const prettierRc = json('.prettierrc')
-  prettierRc.set({
+  prettierRc.delete()
+
+  /**
+   * Update package file
+   */
+  const pkgFile = packageJson()
+  pkgFile.setScript('format', 'prettier --write .')
+  pkgFile.set('prettier', {
     trailingComma: 'es5',
     semi: false,
     singleQuote: true,
@@ -24,13 +31,24 @@ function task () {
     arrowParens: 'always',
     printWidth: 100
   })
-  prettierRc.save()
+
+  const existingEslintConfig = pkgFile.get('eslintConfig')
 
   /**
-   * Update package file
+   * Push to existing config
    */
-  const pkgFile = packageJson()
-  pkgFile.setScript('format', 'prettier --write .')
+  if (existingEslintConfig) {
+    existingEslintConfig.extends = existingEslintConfig.extends || []
+    existingEslintConfig.extends.push('prettier')
+
+    existingEslintConfig.plugins = existingEslintConfig.plugins || []
+    existingEslintConfig.plugins.push('prettier')
+
+    existingEslintConfig.rules = Object.assign({}, existingEslintConfig.rules, {
+      'prettier/prettier': ['error', { endOfLine: 'auto' }]
+    })
+  }
+
   pkgFile.save()
 
   /**
@@ -47,27 +65,12 @@ function task () {
   prettierIgnore.add('*.txt')
   prettierIgnore.save()
 
-  /**
-   * Update eslintrc.json file to use prettier
-   */
-  const eslintRc = json('.eslintrc.json')
-
-  /**
-   * Update if file exists, otherwise ignore
-   */
-  if (eslintRc.exists()) {
-    eslintRc.merge({ extends: ['prettier'] })
-    eslintRc.merge({ plugins: ['prettier'] })
-    eslintRc.set('rules.prettier/prettier', ['error', { endOfLine: 'auto' }])
-    eslintRc.save()
-  }
-
   const plugins = ['prettier']
 
   /**
    * Only install when using eslint
    */
-  if (eslintRc.exists()) {
+  if (existingEslintConfig) {
     plugins.push('eslint-plugin-prettier')
     plugins.push('eslint-config-prettier')
   }

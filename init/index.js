@@ -9,7 +9,7 @@
 
 const chalk = require('chalk')
 const inquirer = require('inquirer')
-const { json, ini } = require('mrm-core')
+const { json, ini, packageJson } = require('mrm-core')
 const { execSync } = require('child_process')
 const debug = require('debug')('adonis:mrm-init')
 
@@ -42,6 +42,17 @@ const isCore = {
 }
 
 /**
+ * Generate readme toc or not
+ *
+ * @type {Object}
+ */
+const generateToc = {
+  type: 'confirm',
+  message: 'Automatically generate TOC for the README file',
+  name: 'generateToc'
+}
+
+/**
  * The minimum node version supported by the project.
  *
  * @type {Object}
@@ -52,8 +63,8 @@ const minNodeVersion = {
   name: 'minNodeVersion',
   choices: [
     {
-      name: '14.17.0 (LTS)',
-      value: '14.17.0',
+      name: '16.13.1 (LTS)',
+      value: '16.13.1',
     },
     {
       name: 'latest',
@@ -157,21 +168,31 @@ const probotApps = {
  * @return {void}
  */
 async function task () {
-  const file = json('config.json')
-  const existingAnswers = file.get()
+  const oldConfig = json('config.json')
+  /**
+   * Move config file to package json
+   */
+  if (oldConfig.exists()) {
+    packageJson().set('mrmConfig', oldConfig.get()).save()
+    oldConfig.delete()
+  }
+
+  const pkg = packageJson()
+  const existingAnswers = pkg.get('mrmConfig')
 
   /**
    * Fill existing values
    */
   if (existingAnswers.minNodeVersion) {
     minNodeVersion.choices.unshift({
-      name: `${existingAnswers.minNodeVersion} (from ./config.json)`,
+      name: `${existingAnswers.minNodeVersion} (from existing config)`,
       value: existingAnswers.minNodeVersion,
     })
     minNodeVersion.default = 0
   }
 
   isCore.default = existingAnswers.core
+  generateToc.default = existingAnswers.generateToc
   license.default = existingAnswers.license
   services.default = existingAnswers.services
   appveyorUsername.default = existingAnswers.appveyorUsername
@@ -182,6 +203,7 @@ async function task () {
     gitOrigin,
     minNodeVersion,
     isCore,
+    generateToc,
     license,
     services,
     appveyorUsername,
@@ -201,8 +223,8 @@ async function task () {
 
   debug('init %o', fileContent)
 
-  file.set(fileContent)
-  file.save()
+  pkg.set('mrmConfig', fileContent)
+  pkg.save()
 
   /**
    * Initiate git repo, when answers has gitOrigin

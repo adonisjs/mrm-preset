@@ -40,7 +40,10 @@ function task (config) {
 
   debug('template file %s', templateFile)
 
-  const file = template('CONTRIBUTING.md', join(__dirname, 'templates', templateFile))
+  const existingContributingFile = template('CONTRIBUTING.md')
+  existingContributingFile.delete()
+
+  const file = template('.github/CONTRIBUTING.md', join(__dirname, 'templates', templateFile))
   file.apply()
 
   saveFile(file, config.force)

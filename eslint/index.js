@@ -11,25 +11,23 @@ const { json, install, packageJson, lines } = require('mrm-core')
 
 function task () {
   /**
-   * Add eslintrc file
+   * Delete old eslintrc files
    */
   const eslintRc = json('.eslintrc.json')
-  eslintRc.set({ extends: ['plugin:adonis/typescriptPackage'] })
-  eslintRc.save()
+  const eslintIgnore = lines('.eslintignore')
+  eslintRc.delete()
+  eslintIgnore.delete()
 
   /**
    * Update package file
    */
   const pkgFile = packageJson()
   pkgFile.setScript('lint', 'eslint . --ext=.ts')
+  pkgFile.set('eslintConfig', {
+    extends: ['plugin:adonis/typescriptPackage']
+  })
+  pkgFile.set('eslintIgnore', ['build'])
   pkgFile.save()
-
-  /**
-   * Add .eslintignore file
-   */
-  const eslintIgnore = lines('.eslintignore')
-  eslintIgnore.add('build')
-  eslintIgnore.save()
 
   /**
    * Install required dependencies

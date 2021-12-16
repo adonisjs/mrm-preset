@@ -36,7 +36,7 @@ function task (config) {
    * projects.
    */
   pkgFile.setScript('mrm', 'mrm --preset=@adonisjs/mrm-preset')
-  pkgFile.setScript('test', 'node japaFile.js')
+  pkgFile.setScript('test', 'node .bin/test.js')
   pkgFile.setScript('pretest', 'npm run lint')
   pkgFile.set('license', config.license)
 
@@ -48,9 +48,14 @@ function task (config) {
   pkgFile.save()
 
   /**
+   * Remove old japafile
+   */
+  file('japaFile.js').delete()
+
+  /**
    * Create japaFile.js
    */
-  const japaFile = file('japaFile.js')
+  const japaFile = file('.bin/test.js')
   japaFile.save(buildJapaFile(japaFile.get(), config.ts))
 }
 
