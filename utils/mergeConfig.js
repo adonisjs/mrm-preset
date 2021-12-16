@@ -14,7 +14,7 @@ module.exports = function (config, defaults) {
   try {
     const projectConfigFile = require(path.join(process.cwd(), 'config.json'))
     deepExtend(config, defaults, projectConfigFile || {})
-  } catch (error) {
-    // ignore
+  } catch {
+    deepExtend(config, defaults, {})
   }
 }
