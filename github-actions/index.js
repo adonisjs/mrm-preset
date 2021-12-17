@@ -59,8 +59,8 @@ function task (config) {
    * "latest" keyword as of now
    */
   const versions = config.minNodeVersion === 'latest'
-    ? ['16.x']
-    : [config.minNodeVersion, '16.x']
+    ? ['17.x']
+    : [config.minNodeVersion, '17.x']
 
   const githubActionsFile = yaml('.github/workflows/test.yml')
   githubActionsFile.set('name', 'test')

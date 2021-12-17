@@ -12,7 +12,8 @@ const deepExtend = require('deep-extend')
 
 module.exports = function (config, defaults) {
   try {
-    const projectConfigFile = require(path.join(process.cwd(), 'config.json'))
+    const pkgFile = require(path.join(process.cwd(), 'package.json'))
+    const projectConfigFile = pkgFile.mrmConfig
     deepExtend(config, defaults, projectConfigFile || {})
   } catch {
     deepExtend(config, defaults, {})

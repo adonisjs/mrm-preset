@@ -13,7 +13,7 @@ const mergeConfig = require('../utils/mergeConfig')
 function task (config) {
   mergeConfig(config, {
     services: [],
-    minNodeVersion: '12.0.0'
+    minNodeVersion: '17.0.0'
   })
 
   const appveyor = config.services.indexOf('appveyor') > -1
