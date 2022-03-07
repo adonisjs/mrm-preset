@@ -178,7 +178,7 @@ async function task () {
   }
 
   const pkg = packageJson()
-  const existingAnswers = pkg.get('mrmConfig')
+  const existingAnswers = pkg.get('mrmConfig', {})
 
   /**
    * Fill existing values
