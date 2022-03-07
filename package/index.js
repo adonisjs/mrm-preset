@@ -14,7 +14,7 @@ const TsPreset = require('./TsPreset')
 const mergeConfig = require('../utils/mergeConfig')
 const buildJapaFile = require('../utils/buildJapaFile')
 
-const baseDependencies = ['japa']
+const baseDependencies = []
 
 function task (config) {
   mergeConfig(config, { services: [], license: 'UNLICENSED' })
@@ -36,7 +36,7 @@ function task (config) {
    * projects.
    */
   pkgFile.setScript('mrm', 'mrm --preset=@adonisjs/mrm-preset')
-  pkgFile.setScript('test', 'node .bin/test.js')
+  pkgFile.setScript('test', 'node -r @adonisjs/require-ts/build/register bin/test.ts')
   pkgFile.setScript('pretest', 'npm run lint')
   pkgFile.set('license', config.license)
 
@@ -46,17 +46,6 @@ function task (config) {
    * Save the package file
    */
   pkgFile.save()
-
-  /**
-   * Remove old japafile
-   */
-  file('japaFile.js').delete()
-
-  /**
-   * Create japaFile.js
-   */
-  const japaFile = file('.bin/test.js')
-  japaFile.save(buildJapaFile(japaFile.get(), config.ts))
 }
 
 task.description = 'Adds package.json file and configures/installs dependencies'
