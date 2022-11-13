@@ -18,6 +18,9 @@ const debug = require('debug')('adonis:mrm-editorconfig')
  * @type {Object}
  */
 const defaults = {
+  '_global': {
+    root: true
+  },
   '*': {
     indent_style: 'space',
     indent_size: 2,
@@ -27,11 +30,10 @@ const defaults = {
     insert_final_newline: true
   },
   '*.json': {
-    insert_final_newline: 'ignore'
+    insert_final_newline: false
   },
   '**.min.js': {
-    indent_style: 'ignore',
-    insert_final_newline: 'ignore'
+    insert_final_newline: false
   },
   MakeFile: {
     indent_style: 'space'
